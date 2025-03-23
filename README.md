@@ -1,0 +1,2 @@
+# Nixy-Wixy
+Nix-Config
