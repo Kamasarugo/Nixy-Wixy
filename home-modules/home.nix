@@ -11,6 +11,7 @@ programs.wofi.enable = true;
 programs.kitty.enable = true;
 programs.helix.enable = true;
 programs.firefox.enable = true;
+programs.helix.settings.editor.indent-guides.render = true;
 
   programs.git = {
     enable = true;

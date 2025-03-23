@@ -24,47 +24,7 @@ let
 in {
  
   # IMPORTS #
-
- 
-################
-### MONITORS ###
-################
-
-# See https://wiki.hyprland.org/Configuring/Monitors/
-# monitor=,preferred,auto,auto
-
-  monitor = [
-    ", preffered, auto, 1" # Default for unspecified monitors
-# "Extra monitors" --> "HDMI-A-1, 1920x1080@60, auto, 1" 
-  ];
-
-
-################### 
-### MY PROGRAMS ###
-###################
-
-# See https://wiki.hyprland.org/Configuring/Keywords/
-
-# Set programs that you use
-
-
-#################
-### AUTOSTART ###
-#################
-
-# Autostart necessary processes (like notifications daemons, status bars, etc.)
-# Or execute your favorite apps at launch like this:
-
-# exec-once = ... #
-
-
-############################
-### ENVIRONMENT VARIABLES ###
-#############################
-
-# See https://wiki.hyprland.org/Configuring/Environment-variables/
-
-
+    
 #####################
 ### LOOK AND FEEL ###
 #####################
@@ -73,8 +33,20 @@ in {
 
 # https://wiki.hyprland.org/Configuring/Variables/#general
 
-  wayland.windowManager.hyprland.enalble = true;
-  wayland.windowManager.hyprland.setting = {
+  wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland.settings = {
+
+
+################
+### MONITORS ###
+################
+
+    # See https://wiki.hyprland.org/Configuring/Monitors/
+    monitor = [
+    ", preffered, auto, 1" # Default for unspecified monitors
+    # "Extra monitors" --> "HDMI-A-1, 1920x1080@60, auto, 1" 
+      ];
+
     general =  {
         gaps_in = 3;
         gaps_out = 10;
@@ -94,7 +66,7 @@ in {
 #        layout = {
 #          dwindle
 #        };
-      };
+    };
       
       # https://wiki.hyprland.org/Configuring/Variables/#decoration
     decoration = {
@@ -173,7 +145,7 @@ in {
 #        new_status = {
 #          master;
 #        };
-   };
+#   };
 
     # https://wiki.hyprland.org/Configuring/Variables/#misc
     misc = {
@@ -237,5 +209,6 @@ in {
     bindm = [
       "${mod}, mouse:272, movewindow"
       "${mod}, mouse:273, resizewindow"
-    ];
+      ];
+    };
 }
