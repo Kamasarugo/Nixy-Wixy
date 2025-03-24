@@ -5,16 +5,33 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
+  imports = [ # Include the results of the hardware scan.
+    ./stylix.nix
+    
       inputs.home-manager.nixosModules.default
+      inputs.stylix.nixosModules.stylix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  
+  # storage optimisation
+  nix.optimise = {
+    automatic = true;
+    persistent = true;
+    dates = [ "daily" ];
+  };
 
+  nix.gc = {
+    automatic = true;
+    persistent = true;
+    dates = "daily";
+    options = "--delete-older-than 5d";
+  };
+
+  
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -56,6 +73,10 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
+
+# This is to make sure stylix is loaded last
+# Remember to add stylic to new users
+stylix.homeManagerIntegration.autoImport = false;
 
 home-manager = {
   extraSpecialArgs = { inherit inputs; };

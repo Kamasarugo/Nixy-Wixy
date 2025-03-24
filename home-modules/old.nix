@@ -24,48 +24,68 @@ let
 in {
  
   # IMPORTS #
-  imports = [
-    ./waybar.nix
-];
-  
-  wayland.windowManager.hyprland.enable = true;
-  wayland.windowManager.hyprland.settings = {
+
+################### 
+### MY PROGRAMS ###
+###################
+
+# See https://wiki.hyprland.org/Configuring/Keywords/
+
+# Set programs that you use
 
 
-################
-### MONITORS ###
-################
+#################
+### AUTOSTART ###
+#################
 
-    # See https://wiki.hyprland.org/Configuring/Monitors/
-    monitor = [
-    ", preffered, auto, 1" # Default for unspecified monitors
-    # "Extra monitors" --> "HDMI-A-1, 1920x1080@60, auto, 1" 
-      ];
-    
+# Autostart necessary processes (like notifications daemons, status bars, etc.)
+# Or execute your favorite apps at launch like this:
+
+# exec-once = ... #
+
+
+############################
+### ENVIRONMENT VARIABLES ###
+#############################
+
+# See https://wiki.hyprland.org/Configuring/Environment-variables/
+
+
 #####################
 ### LOOK AND FEEL ###
 #####################
 
-    # Refer to https://wiki.hyprland.org/Configuring/Variables/
+# Refer to https://wiki.hyprland.org/Configuring/Variables/
 
-    # https://wiki.hyprland.org/Configuring/Variables/#general
+# https://wiki.hyprland.org/Configuring/Variables/#general
+
+  wayland.windowManager.hyprland.enalble = true;
+  wayland.windowManager.hyprland.settings = {
     general =  {
         gaps_in = 3;
         gaps_out = 10;
 
         border_size = 2;
 
+      monitor = [
+    ", preffered, auto, 1" # Default for unspecified monitors
+    # "Extra monitors" --> "HDMI-A-1, 1920x1080@60, auto, 1" 
+     ];
+
         # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-        #"col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        #"col.inactive_border" = "rgba(595959aa)";
+        #col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
+        #col.inactive_border = rgba(595959aa)
+
         # Set to true enable resizing windows by clicking and dragging on borders and gaps
         resize_on_border = false;
 
         # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
         allow_tearing = false;
 
-        layout = "dwindle";
-    };
+#        layout = {
+#          dwindle
+#        };
+      };
       
       # https://wiki.hyprland.org/Configuring/Variables/#decoration
     decoration = {
@@ -79,7 +99,7 @@ in {
             enabled = true;
             range = 4;
             render_power = 3;
-            #color = "rgba(1a1a1aee)";
+            #color = rgba(1a1a1aee);
         };
 
         # https://wiki.hyprland.org/Configuring/Variables/#blur
@@ -92,11 +112,7 @@ in {
         };
     };
 
-        exec-once = [
-          "systemctl --user enable --now waybar.service"
-         ]; 
-
-        
+    
 #    # https://wiki.hyprland.org/Configuring/Variables/#animations
 #    animations = {
 #       enabled = yes, please :)
@@ -144,9 +160,11 @@ in {
     };
 
     # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-    master = {
-        new_status = "master";
-        };
+#    master = {
+#        new_status = {
+#          master;
+#        };
+   };
 
     # https://wiki.hyprland.org/Configuring/Variables/#misc
     misc = {
@@ -200,7 +218,7 @@ in {
       "${mod} SHIFT, 8, movetoworkspace, 8"
       "${mod} SHIFT, 9, movetoworkspace, 9"
       "${mod} SHIFT, 0, movetoworkspace, 10"  
-      ];
+    ];
   
 
     bindel = [
@@ -210,6 +228,6 @@ in {
     bindm = [
       "${mod}, mouse:272, movewindow"
       "${mod}, mouse:273, resizewindow"
-      ];
+        ];
     };
-}
+};

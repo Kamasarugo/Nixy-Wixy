@@ -7,9 +7,13 @@
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    };
+      };
 
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
  outputs = { nixpkgs, ... }@inputs:
   let
     system = "x86_64-linux";
@@ -29,5 +33,4 @@
     };
   };
 }
-
 
