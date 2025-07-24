@@ -17,6 +17,8 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
@@ -72,6 +74,9 @@
     layout = "au";
     variant = "";
   };
+
+  users.defaultUserShell = pkgs.fish;
+  programs.fish.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kamasarugo = {

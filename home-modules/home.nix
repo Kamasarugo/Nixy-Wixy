@@ -5,8 +5,9 @@ imports = [
   ./hyprland.nix
   ../stylix.nix
   ./niri.nix
+  ./fish.nix
   
-  inputs.stylix.homeManagerModules.stylix
+  inputs.stylix.homeModules.stylix
   
 ];
 
