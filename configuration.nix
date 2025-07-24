@@ -10,13 +10,20 @@
     
       inputs.home-manager.nixosModules.default
       inputs.stylix.nixosModules.stylix
+      inputs.niri.nixosModules.niri
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
+   nixpkgs.overlays = [
+    inputs.niri.overlays.niri
+  ];
+
   # storage optimisation
   nix.optimise = {
     automatic = true;
@@ -95,7 +102,20 @@ home-manager = {
 ];
   programs.hyprland.enable = true; #enable hyprland
 
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
+  };
+
+  programs.steam.enable = true;
+  
   services.displayManager.ly.enable = true;
+
+  services.logind = {
+  lidSwitch = "ignore";
+  powerKey = "ignore";
+  powerKeyLongPress = "ignore";
+};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

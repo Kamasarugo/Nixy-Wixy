@@ -9,7 +9,7 @@
 # Create your files separately and then link them to this file like this:
 # source = ~/.config/hypr/myColors.conf
 
-{ config, osConfig, ... }:
+{ config, osConfig, lib , ... }:
 
 
 ###############
@@ -151,7 +151,7 @@ in {
     # https://wiki.hyprland.org/Configuring/Variables/#misc
     misc = {
         force_default_wallpaper = -1; # Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo = false; # If true disables the random hyprland logo / anime girl background. :(
+        disable_hyprland_logo = lib.mkDefault false; # If true disables the random hyprland logo / anime girl background. :(
     };
 
 
@@ -204,7 +204,8 @@ in {
   
 
     bindel = [
-      
+        ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+        ",XF86MonBrightnessUp, exec, brightnessctl set +5%"      
     ];
 
     bindm = [

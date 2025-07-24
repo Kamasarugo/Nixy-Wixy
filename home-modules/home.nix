@@ -4,8 +4,10 @@
 imports = [
   ./hyprland.nix
   ../stylix.nix
+  ./niri.nix
   
   inputs.stylix.homeManagerModules.stylix
+  
 ];
 
   fonts.fontconfig.enable = true;
@@ -21,6 +23,8 @@ programs.kitty.enable = true;
 programs.helix.enable = true;
 programs.firefox.enable = true;
 programs.helix.settings.editor.indent-guides.render = true;
+programs.btop.enable = true;
+programs.floorp.enable = true;
 
   programs.git = {
     enable = true;
@@ -39,11 +43,15 @@ programs.helix.settings.editor.indent-guides.render = true;
   #productive
   obsidian
   libreoffice-fresh
+  floorp
+  inputs.zen-browser.packages."${system}".default
 
   #utils
   brightnessctl
   hyprshot
   ksnip
+  btop
+  bluetui
   
   #tools
   nixd
@@ -52,6 +60,13 @@ programs.helix.settings.editor.indent-guides.render = true;
 
   #fonts
   corefonts
+
+  #games
+  steam
+
+  #unknown giblets
+  vesktop
+  
 ];
   home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
