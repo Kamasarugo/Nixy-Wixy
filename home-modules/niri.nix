@@ -35,6 +35,7 @@ in {
   services.hyprpaper.enable = true;
 
   programs.niri = {
+  enable = true;
     settings = {
       prefer-no-csd = true;
 

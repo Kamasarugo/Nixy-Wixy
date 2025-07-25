@@ -8,7 +8,7 @@ imports = [
   ./fish.nix
   
   inputs.stylix.homeModules.stylix
-  
+  inputs.niri.homeModules.niri
 ];
 
   fonts.fontconfig.enable = true;
