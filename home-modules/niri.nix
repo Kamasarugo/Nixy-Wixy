@@ -1,4 +1,4 @@
-{ config , pkgs , osConfig , ... }:
+{ config , pkgs , osConfig, ... }:
 let
   mod = "Super";
   menu = "wofi --show drun";

@@ -166,7 +166,8 @@ in {
       "${mod}, D, exec, ${menu}"
       "${mod}, F, fullscreen"
       "${mod}, W, togglegroup"
-
+      "${mod}, E, exit"
+    
       "${mod}, S, exec, hyprshot -. region -- ksnip" 
       "${mod} SHIFT, S, exec, hyprshot -m window -- ksnip"
       "${mod} CONTROL, S, exec, hyprshot -m output -- ksnip"
