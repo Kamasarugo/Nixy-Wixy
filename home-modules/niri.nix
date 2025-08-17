@@ -22,6 +22,7 @@ in {
     swaylock-effects   
     xwayland-satellite
     pulseaudio # pactl for toggle mute
+    pavucontrol
     fish # scripts
     libnotify # some things rely on libnotify to function
   ];
@@ -35,7 +36,6 @@ in {
   services.hyprpaper.enable = true;
 
   programs.niri = {
-  enable = true;
     settings = {
       prefer-no-csd = true;
 
@@ -62,11 +62,14 @@ in {
       };
 
       input = {
+
+        focus-follows-mouse.enable = true;
+        
         mouse = {
           accel-profile = "flat";
           accel-speed = 0.0;
         };
-
+  
         trackpoint = {
           accel-profile = "adaptive";
           accel-speed = 0.6;
@@ -176,10 +179,10 @@ in {
         "${mod}+W".action = toggle-column-tabbed-display;
 
         # open things but better!!!
-        "${mod}+1".action = spawn "floorp";
-        "${mod}+2".action = spawn "obsidian";
-        "${mod}+3".action = spawn "discord";
-        "${mod}+4".action = spawn "steam";
+#        "${mod}+1".action = spawn "floorp";
+#        "${mod}+2".action = spawn "obsidian";
+#        "${mod}+3".action = spawn "discord";
+#        "${mod}+4".action = spawn "steam";
 
         # refocus
         "${mod}+K".action = focus-window-or-workspace-up;

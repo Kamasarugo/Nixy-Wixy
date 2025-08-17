@@ -8,7 +8,6 @@ imports = [
   ./fish.nix
   
   inputs.stylix.homeModules.stylix
-  inputs.niri.homeModules.niri
 ];
 
   fonts.fontconfig.enable = true;
@@ -46,6 +45,7 @@ programs.floorp.enable = true;
   libreoffice-fresh
   floorp
   inputs.zen-browser.packages."${system}".default
+  anki-bin
 
   #utils
   brightnessctl
@@ -53,6 +53,7 @@ programs.floorp.enable = true;
   ksnip
   btop
   bluetui
+  upower
   
   #tools
   nixd

@@ -13,6 +13,7 @@ in
       modules-left = [
         "hyprland/workspaces"
         "hyprland/window"
+        "wlr/workspaces"
       ];
       modules-center = [
         "clock"

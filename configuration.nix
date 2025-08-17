@@ -91,6 +91,7 @@
 stylix.homeManagerIntegration.autoImport = false;
 
 home-manager = {
+  backupFileExtension = "hm-backup";
   extraSpecialArgs = { inherit inputs; };
   users = {
     "kamasarugo" = import ./home-modules/home.nix;
