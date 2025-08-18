@@ -30,15 +30,26 @@
     system = "x86_64-linux";
     lib = nixpkgs.lib;
     pkgs = nixpkgs.legacyPackages.${system};
-  in{
+  in {
     nixosConfigurations = {
-      nixos = lib.nixosSystem {
+      nixos-laptop = lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
 
         modules = [
+          ./devices/laptop/hardware-configuration.nix
           ./configuration.nix
-          ./hardware-configuration.nix
+          ];
+          
+      };
+
+      nixos-desktop = lib.nixosSystems {
+        inherit system;
+        specialArgs = { inherit inputs; };
+
+        modules = [
+          ./devices/pc/hardware-configuration.nix
+          ./configuration.nix
         ];
       };
     };

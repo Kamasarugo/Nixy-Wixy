@@ -43,10 +43,10 @@ programs.floorp.enable = true;
   #productive
   obsidian
   libreoffice-fresh
+  #browsers 
   floorp
   inputs.zen-browser.packages."${system}".default
-  anki-bin
-
+  
   #utils
   brightnessctl
   hyprshot
@@ -65,9 +65,12 @@ programs.floorp.enable = true;
 
   #games
   steam
-
-  #unknown giblets
+  heroic
+  prismlauncher
+  
+  #social
   vesktop
+  element-desktop
   
 ];
   home.file = {
