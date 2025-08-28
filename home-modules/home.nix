@@ -54,6 +54,7 @@ programs.floorp.enable = true;
   btop
   bluetui
   upower
+  nemo
   
   #tools
   nixd
@@ -67,10 +68,16 @@ programs.floorp.enable = true;
   steam
   heroic
   prismlauncher
+  lutris
+  protonup-qt
+  wine
   
   #social
   vesktop
   element-desktop
+
+  #general
+  spotify
   
 ];
   home.file = {
