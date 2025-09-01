@@ -39,10 +39,7 @@
     dates = "daily";
     options = "--delete-older-than 5d";
   };
-
   
-  networking.hostName = "nixos-laptop"; # Define your hostname
-
   services.thermald.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
