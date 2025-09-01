@@ -43,7 +43,7 @@
           
       };
 
-      nixos-desktop = lib.nixosSystems {
+      nixos-desktop = lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
 
