@@ -63,7 +63,7 @@ in {
 
       input = {
 
-        focus-follows-mouse.enable = true;
+#        focus-follows-mouse.enable = true;
         
         mouse = {
           accel-profile = "flat";
@@ -115,24 +115,32 @@ in {
 
       outputs = {
         # left desktop monitor
-        "HDMI-A-1" = {
+        "HDMI-A-2" = {
           scale = 1.0;
+          transform.rotation = 90;
           mode = {
-            width = 1920;
-            height = 1080;
-            refresh = 100.0;
+            width = 1680;
+            height = 1050;
+            };
+          position = {
+            x = -500;
+            y = -500;
           };
         };
-
+      
         # primary desktop monitor
-        "DVI-D-1" = {
+        "DP-1" = {
           scale = 1.0;
           mode = {
             width = 1920;
             height = 1080;
-            refresh = 100.0;
+            refresh = 239.964;
+            };
+            position = {
+              x = 0;
+              y = 0;
+            };
           };
-        };
 
         # laptop monitor
         "eDP-1" = {

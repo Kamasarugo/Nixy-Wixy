@@ -8,25 +8,39 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  networking.hostName = "nixos-laptop";
+  networking.hostName = "nixos-desktop";
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  hardware.graphics = {
+    enable = true;
+    };
 
-  hardware.graphics.enable = true;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true; 
+    open = false;                  
+    nvidiaSettings = false;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+  };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/0d820122-08a8-4c70-9dc6-c96b2808ced6";
+    { device = "/dev/disk/by-uuid/55ddbff1-aa50-45ce-9d6d-ef512aa43221";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/608B-9E37";
+    { device = "/dev/disk/by-uuid/1352-286E";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
+
+  fileSystems."/home/kamasarugo/hdd" = {
+    device = "/dev/disk/by-uuid/e57e578b-047c-4363-b364-f63b8f83eac9";
+    options = [ "users" "exec" "nofail" ];
+  };
 
   swapDevices = [ ];
 
@@ -35,9 +49,9 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp2s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp4s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
