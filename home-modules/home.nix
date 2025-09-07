@@ -55,7 +55,6 @@ programs.floorp.enable = true;
   bluetui
   upower
   nemo
-  speedtest-cli
   
   #tools
   nixd

@@ -41,6 +41,8 @@
   };
   
   services.thermald.enable = true;
+
+  services.flatpak.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -83,6 +85,13 @@
     description = "kamasarugo";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+  };
+
+    environment.sessionVariables = {
+    # flatpak dirs
+    XDG_DATA_DIRS = [
+      "$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
+    ];
   };
 
 # This is to make sure stylix is loaded last
