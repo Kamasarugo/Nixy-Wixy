@@ -125,10 +125,9 @@ home-manager = {
   
   services.displayManager.ly.enable = true;
 
-  services.logind = {
-  lidSwitch = "ignore";
-  powerKey = "ignore";
-  powerKeyLongPress = "ignore";
+  services.logind.settings.Login = {
+  HandlePowerKey = "ignore";
+  HandlePowerKeyLongPress = "ignore";
 };
 
   # Some programs need SUID wrappers, can be configured further or are
