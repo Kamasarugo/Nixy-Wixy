@@ -60,6 +60,8 @@ programs.floorp.enable = true;
   nixd
   nix-output-monitor
   nh
+  tailscale
+  xclicker
 
   #fonts
   corefonts
