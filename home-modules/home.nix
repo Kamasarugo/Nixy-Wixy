@@ -71,7 +71,13 @@ programs.floorp.enable = true;
   lutris
   protonup-qt
   wine
-  
+  (
+    vintagestory.overrideAttrs (old: rec {
+    postInstall = ''
+    cp -r ${/home/kamasarugo/Nixy-Wixy/other/vintageStory}/* $out/share/vintagestory/
+    '';
+  })
+  )
   #social
   vesktop
   element-desktop
