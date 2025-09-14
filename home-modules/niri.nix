@@ -1,7 +1,7 @@
 { config , pkgs , osConfig, ... }:
 let
   mod = "Super";
-  menu = "wofi --show drun";
+  menu = "fuzzel";
   terminal = "kitty";
   alt_terminal = "foot";
 
