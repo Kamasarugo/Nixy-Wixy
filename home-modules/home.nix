@@ -25,6 +25,7 @@ programs.firefox.enable = true;
 programs.helix.settings.editor.indent-guides.render = true;
 programs.btop.enable = true;
 programs.floorp.enable = true;
+programs.fuzzel.enable = true;
 
   programs.git = {
     enable = true;
@@ -55,6 +56,7 @@ programs.floorp.enable = true;
   bluetui
   upower
   nemo
+  fuzzel
   
   #tools
   nixd

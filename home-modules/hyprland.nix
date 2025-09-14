@@ -18,7 +18,7 @@
 
 let
   mod = "SUPER";
-  menu = "wofi --show drun";
+  menu = "fuzzel";
   terminal = "kitty";
   
 in {
