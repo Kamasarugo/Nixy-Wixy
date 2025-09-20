@@ -1,0 +1,24 @@
+sddm or gdm
+skoove - scripts/recorder.pi and .sh
+	waybar.nix
+wallpaper
+general waybar config ideas
+	Left
+		Current program
+		
+	Middle
+		time/date
+			Calender on click
+
+	Right
+		cpu
+			btop on click
+		memory
+		brightness
+		volume
+			Pavucontrol on click
+		Network
+		Battery
+		Tray
+			Collapsable/container/drawer
+sway/change nc idk yet

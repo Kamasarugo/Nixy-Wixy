@@ -24,8 +24,8 @@ programs.helix.enable = true;
 programs.firefox.enable = true;
 programs.helix.settings.editor.indent-guides.render = true;
 programs.btop.enable = true;
-programs.floorp.enable = true;
 programs.fuzzel.enable = true;
+programs.floorp.enable = true;
 
   programs.git = {
     enable = true;
@@ -42,21 +42,23 @@ programs.fuzzel.enable = true;
   home.packages = with pkgs; [
 
   #productive
-  obsidian
-  libreoffice-fresh
-  #browsers 
-  floorp
+  obsidian #Note taking app
+  libreoffice-fresh #MSOffice replacement
+  #browsers
   inputs.zen-browser.packages."${system}".default
+  floorp-bin
   
   #utils
-  brightnessctl
+  brightnessctl #Brightness Control
   hyprshot
-  ksnip
-  btop
-  bluetui
-  upower
-  nemo
-  fuzzel
+  ksnip #Screenshot
+  btop #Task Manger/Hardware Monitor
+  bluetui #Bluetooth
+  upower #Power Management
+  nemo #File Browser
+  fuzzel #Dmenu
+  dotool
+  wf-recorder #Screen Recorder
   
   #tools
   nixd
@@ -64,25 +66,26 @@ programs.fuzzel.enable = true;
   nh
 
   #fonts
-  corefonts
+  corefonts #Fonts
 
   #games
   steam
-  heroic
-  prismlauncher
+  heroic #Epic Games replacement thingy
+  prismlauncher #Minecraft Mod Launcher
   lutris
   protonup-qt
   wine
   (
     vintagestory.overrideAttrs (old: rec {
     postInstall = ''
-    cp -r ${/home/kamasarugo/Nixy-Wixy/other/vintageStory}/* $out/share/vintagestory/
+    cp -r ${../other/vintageStory}/* $out/share/vintagestory/
     '';
   })
   )
+  
   #social
-  vesktop
-  element-desktop
+  vesktop #Discord Wrapper
+  element-desktop #Matrix thingy
 
   #general
   spotify
