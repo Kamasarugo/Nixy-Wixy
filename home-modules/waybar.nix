@@ -1,4 +1,4 @@
-{ config,  ... }:
+{ config, lib, ... }:
 let
   colors = config.lib.stylix.colors;
 in
@@ -9,10 +9,12 @@ in
 
     settings.main-bar = {
       layer = "top";
-      position = "left";
+      position = "right";
 
       modules-left = [
-        
+        "clock"
+        "battery"
+        "group/connections"
       ];
 
       modules-center = [
@@ -20,11 +22,8 @@ in
       ];
 
       modules-right = [
+        "group/tray"
         "group/info"
-        "group/connections"
-        "clock"
-        "tray"
-        "battery"
       ];
 # Primary Module Groups
   "group/connections" = {
@@ -42,13 +41,24 @@ in
       transition-left-to-right = false;
     };
     modules = [
-     # "custom/dmark"
+      "custom/info-icon"
       "group/gcpu"
       "memory"
       "disk"
     ];
   };
-  
+
+  "group/tray" = {
+    orientation = "inherit";
+    drawer = {
+      transition-duration = 500;
+      transition-left-to-right = false;
+    };
+    modules = [
+      "custom/drawer-icon"
+      "tray"
+    ];
+  };
 # Secondary Module Groups
 
   "group/gcpu" = {
@@ -129,11 +139,14 @@ in
 
   memory = {
     format = "<b>  \n{:2}󱉸</b>";
+    tooltip = false;
   };
+  
   disk = {
     interval = 600;
     format = "<b> 󰋊 \n{percentage_used}󱉸</b>";
     path = "/";
+    tooltip = false;
     };
       
   clock = {
@@ -150,17 +163,46 @@ in
       };
     };
   };
-  
-  battery = {
-    format = "{icon} {capacity}%";
-    format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-    tooltip-format = "{time}, {cycles} cycles, {health}% health";
+
+  "custom/info-icon" = {
+    format = "ⓘ";
+    tooltip = false;
   };
   
+  battery = {
+    rotate = 270;
+    states = {
+      good = 95;
+      warning = 30;
+      critical = 15;
+    };
+    format = "{icon}";
+    format-charging = "<b>{icon} </b>";
+    format-full = "<span color='#82A55F'><b>{icon}</b></span>";
+    format-icons = [
+      "󰁻"
+      "󰁼"
+      "󰁾"
+      "󰂀"
+      "󰂂"
+      "󰁹"
+    ];
+    tooltip-format = "{timeTo} {capacity} % | {power} W";
+  };
+     
   tray = {
     spacing = 5;
   };
+# Drawer
+  "custom/drawer-up" = {
+    format = "^";
+    tooltip = false;
+  };
 
+  "custom/drawer-icon" = {
+    format = "=";
+    tooltip = false;
+  };
 
 
 

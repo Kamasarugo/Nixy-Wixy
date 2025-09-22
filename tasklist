@@ -1,24 +1,12 @@
 sddm or gdm
-skoove - scripts/recorder.pi and .sh
-	waybar.nix
 wallpaper
-general waybar config ideas
-	Left
-		Current program
-		
-	Middle
-		time/date
-			Calender on click
-
-	Right
-		cpu
-			btop on click
-		memory
-		brightness
-		volume
-			Pavucontrol on click
-		Network
-		Battery
-		Tray
-			Collapsable/container/drawer
+waybar
+	brightness
+	volume
+		Pavucontrol on click
+	Notification
+	Screen recorder
+	Bluetooth
+		center Network
+		Battery level in color thingy
 sway/change nc idk yet
