@@ -15,6 +15,7 @@ in
         "clock"
         "battery"
         "group/connections"
+        "group/audio"
       ];
 
       modules-center = [
@@ -57,6 +58,19 @@ in
     modules = [
       "custom/drawer-icon"
       "tray"
+    ];
+  };
+
+  "group/audio" = {
+    orientation = "inherit";
+    drawer = {
+      transition-duration = 500;
+      trainsition-to-right = true;
+    };
+    modules = [
+      "pulseaudio"
+      "pulseaudio#mic"
+      "pulseaudio/slider"
     ];
   };
 # Secondary Module Groups
@@ -118,6 +132,40 @@ in
 
 # Bluetooth
 
+# Audio
+pulsaudio = {
+  format = "{icon}";
+  tooltip-format = "{volume}% {icon} | {desc}";
+  format-muted = "󰖁";
+  format-icons = {
+    default = [
+      "󰕿"
+      "󰖀"
+      "󰕾"    
+    ];
+  };
+  on-click = "volume mute";
+  on-click-middle = "pavucontrol";
+  on-scroll-up = "pactl set-sink-volume @DEAFULT_SINK@ +5%";
+  on-scroll-down = "pactl set-sink-volume @DEFAULT_SINK@ -5%";
+  smooth-scrolling-threshold = 1;
+};
+
+  "pulseaudio#mic" = {
+    format = "{format_source}";
+    format-source = "";
+    format-source-muted = "";
+    tooltip-format = "{volume}% {format_source} ";
+    on-click = "pactl set-source-mute 0 toggle";
+    on-scroll-down = "pactl set-source-volume 0 -1%";
+    on-scroll-up = "pactl set-source-volume 0 +1%";
+  };
+  
+  "pulseaudio/slider" = {
+    min = 0;
+    max = 140;
+    orientation = "vertical";
+  };
 #CPU
   "custom/cpu-icon" = {
     format = "󰻠";
@@ -134,8 +182,6 @@ in
     format = "<b>{usage}󱉸</b>";
     on-click = "foot btop";
   };
-
-#Info
 
   memory = {
     format = "<b>  \n{:2}󱉸</b>";
@@ -164,11 +210,6 @@ in
     };
   };
 
-  "custom/info-icon" = {
-    format = "ⓘ";
-    tooltip = false;
-  };
-  
   battery = {
     rotate = 270;
     states = {
@@ -193,16 +234,27 @@ in
   tray = {
     spacing = 5;
   };
-# Drawer
+
+
+
+
+
+  
+# Icons
   "custom/drawer-up" = {
     format = "^";
     tooltip = false;
   };
 
   "custom/drawer-icon" = {
-    format = "=";
+    format = "≡";
     tooltip = false;
   };
+
+  "custom/info-icon" = {
+      format = "ⓘ";
+      tooltip = false;
+    };
 
 
 

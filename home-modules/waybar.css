@@ -64,6 +64,7 @@ tooltip label {
   background: alpha(@background, 0.4);
   color: lighter(@active);
 }
+
 #info,
 #clock,
 #battery,
@@ -71,9 +72,11 @@ tooltip label {
 #memory,
 #disk,
 #together,
+#audio,
 #connections,
 #brightness,
 #power,
+#network.wifi,
 #custom-updates,
 #tray {
   border-radius: 4px;
@@ -99,11 +102,6 @@ tooltip label {
 
 #network.wifi {
   padding-right: 4px;
-}
-
-#submap {
-  min-width: 0px;
-  margin: 4px 6px 4px 6px;
 }
 
 #info,
