@@ -9,103 +9,206 @@ in
 
     settings.main-bar = {
       layer = "top";
-      
+      position = "right";
+
       modules-left = [
-        "hyprland/workspaces"
-        "hyprland/window"
-        "wlr/workspaces"
-      ];
-      modules-center = [
         "clock"
-      ];
-      
-      modules-right = [
-        "temperature"
-        "cpu"
-        "memory"
-        "backlight"
-        "pulseaudio"
-        "network"
         "battery"
-        "tray"
-        "group"
+        "group/connections"
       ];
 
-      "hyprland/window".icon = true;
+      modules-center = [
+        
+      ];
 
-      tray = {
-        spacing = 5;
-      };
+      modules-right = [
+        "group/tray"
+        "group/info"
+      ];
+# Primary Module Groups
+  "group/connections" = {
+    oritentation = "inherit";
+    modules = [
+      "group/network"
+      "custom/bluetooth"
+    ];
+  };
+
+  "group/info" = {
+    orientation = "inherit";
+    drawer = {
+      transition-duration = 500;
+      transition-left-to-right = false;
+    };
+    modules = [
+      "custom/info-icon"
+      "group/gcpu"
+      "memory"
+      "disk"
+    ];
+  };
+
+  "group/tray" = {
+    orientation = "inherit";
+    drawer = {
+      transition-duration = 500;
+      transition-left-to-right = false;
+    };
+    modules = [
+      "custom/drawer-icon"
+      "tray"
+    ];
+  };
+# Secondary Module Groups
+
+  "group/gcpu" = {
+    orientation = "inherit";
+    modules = [
+      "custom/cpu-icon"
+      "custom/cputemp"
+      "cpu"
+    ];
+  };
   
+  "group/network" = {
+    orientation = "inherit";
+    drawer = {
+      transition-duration = 500;
+      transition-left-to-right = true;
+    };
+    modules = [
+      "network"
+      "network/speed"
+    ];
+  };
 
-    clock = {
-      format = "{:%H:%M}  ";
-      format-alt = "{:%A, %B %d, %Y (%R)}  ";
-      tooltip-format = "<tt><small>{calendar}</small></tt>";
-      calendar = {
-          mode          = "year";
-            mode-mon-col  = 3;
-            weeks-pos     = "right";
-            on-scroll     = 1;
-             format = {
-              "months" =     "<span color='#ffead3'><b>{}</b></span>";
-              "days" =       "<span color='#ecc6d9'><b>{}</b></span>";
-              "weeks" =      "<span color='#99ffdd'><b>W{}</b></span>";
-              "weekdays" =   "<span color='#ffcc66'><b>{}</b></span>";
-              "today" =      "<span color='#ff6699'><b><u>{}</u></b></span>";
+# Individial Modules
+
+#Network
+
+  network = {
+    format = "{icon}";
+    format-icons = {
+      wifi = [
+        "󰤨"
+      ];
+      ethernet = [
+        "󰈀"
+      ];
+      disconnected = [
+        "󰖪"
+      ];
+    };
+    format-wifi = "󰤨";
+    format-ethernet = "󰈀";
+    format-disconnected = "󰖪";
+    format-linked = "󰈁";
+    tooltip = false;
+  };
+  "network/speed" = {
+    format = " {bandwidthDownBits} ";
+    rotate = 90;
+    interval = 5;
+    tooltip-format = "{ipaddr}";
+    tooltip-format-wifi = "{essid} ({signalStrength}%)   \n{ipaddr} | {frequency} MHz{icon} ";
+    tooltip-format-ethernet = "{ifname} 󰈀 \n{ipaddr} | {frequency} MHz{icon} ";
+    tooltip-format-disconnected = "Not Connected to any type of Network";
+    tooltip = true;
+  };
+
+# Bluetooth
+
+#CPU
+  "custom/cpu-icon" = {
+    format = "󰻠";
+    tooltip = false;
+  };
+  
+  "custom/cputemp" = {
+    format = "{}";
+    interval = 10;
+    return-type = "json";
+  };
+    
+  cpu = {
+    format = "<b>{usage}󱉸</b>";
+    on-click = "foot btop";
+  };
+
+#Info
+
+  memory = {
+    format = "<b>  \n{:2}󱉸</b>";
+    tooltip = false;
+  };
+  
+  disk = {
+    interval = 600;
+    format = "<b> 󰋊 \n{percentage_used}󱉸</b>";
+    path = "/";
+    tooltip = false;
+    };
+      
+  clock = {
+    format = "{:%H\n%M}";
+    tooltip-format = "<tt><small>{calendar}</small></tt>";
+    calendar = {
+      mode = "month";
+      mode-mon-col = 3;
+      weeks-pos = "right";
+      on-scroll = 1;
+      on-click-right = "mode";
+      format = {
+        today = "<span color='#a6e3a1'><b><u>{}</u></b></span>";
+      };
     };
   };
-};
-#        actions =  {
-#                    on-click-right = "mode";
-#                    on-scroll-up = "tz_up";
-#                    on-scroll-down = "tz_down";
-#                    on-scroll-up = "shift_up";
-#                    on-scroll-down = "shift_down";
-#                    };
 
-      battery = {
-        format = "{icon} {capacity}%";
-        format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-        tooltip-format = "{time}, {cycles} cycles, {health}% health";
-      };
-
-      network = {
-        format = "{icon} {essid}";
-        format-icons = [ "󰤟" "󰤢" "󰤥" "󰤨" ];
-      };
-
-      pulseaudio = {
-        format = "{icon} {volume}%";
-        format-muted = " muted";
-        format-icons.default = [ "" ""];
-        on-click = "pavucontrol";
-        scroll-step = 1;
-      };
-
-      backlight = {
-        format = " {percent}%";
-      };
-
-      cpu = {
-        interval = 1;
-        format = " {usage}%";
-      };
-
-      memory = {
-        interval = 1;
-        format = " {percentage}%";
-        tooltip-format = "{used} GiB / {total} GiB";
-      };
-
-      temperature = {
-        interval = 1;
-        thermal-zone = 2;
-        critical-threshold = 80;
-        format = " {temperatureC}°C";
-      };
+  "custom/info-icon" = {
+    format = "ⓘ";
+    tooltip = false;
+  };
+  
+  battery = {
+    rotate = 270;
+    states = {
+      good = 95;
+      warning = 30;
+      critical = 15;
     };
-    
-    style = builtins.readFile ./waybar.css;
+    format = "{icon}";
+    format-charging = "<b>{icon} </b>";
+    format-full = "<span color='#82A55F'><b>{icon}</b></span>";
+    format-icons = [
+      "󰁻"
+      "󰁼"
+      "󰁾"
+      "󰂀"
+      "󰂂"
+      "󰁹"
+    ];
+    tooltip-format = "{timeTo} {capacity} % | {power} W";
+  };
+     
+  tray = {
+    spacing = 5;
+  };
+# Drawer
+  "custom/drawer-up" = {
+    format = "^";
+    tooltip = false;
+  };
+
+  "custom/drawer-icon" = {
+    format = "=";
+    tooltip = false;
+  };
+
+
+
+       
+    };
   };
 }
+
+
