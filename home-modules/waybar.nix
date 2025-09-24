@@ -133,7 +133,7 @@ in
 # Bluetooth
 
 # Audio
-pulsaudio = {
+pulseaudio = {
   format = "{icon}";
   tooltip-format = "{volume}% {icon} | {desc}";
   format-muted = "󰖁";
