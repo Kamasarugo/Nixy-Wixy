@@ -13,6 +13,7 @@ in
 
       modules-left = [
         "clock"
+        "custom/notification"
         "battery"
         "group/connections"
         "group/audio"
@@ -24,18 +25,18 @@ in
 
       modules-right = [
         "group/tray"
-        "group/info"
+        "group/system-info"
       ];
 # Primary Module Groups
   "group/connections" = {
     oritentation = "inherit";
     modules = [
       "group/network"
-      "custom/bluetooth"
+      "group/bluetooth"
     ];
   };
 
-  "group/info" = {
+  "group/system-info" = {
     orientation = "inherit";
     drawer = {
       transition-duration = 500;
@@ -96,9 +97,22 @@ in
     ];
   };
 
+  "group/bluetooth" = {
+    orientation = "inherit";
+    drawer = {
+      transition-duration = 500;
+      transition-left-to-right = true;
+    };
+    
+    modules = [
+      "bluetooth"
+      "bluetooth#status"
+    ];
+  };
+
 # Individial Modules
 
-#Network
+# Network
 
   network = {
     format = "{icon}";
@@ -132,6 +146,31 @@ in
 
 # Bluetooth
 
+bluetooth = {
+    format-on = "";
+    format-off = "󰂲";
+    format-disabled = "";
+    format-connected = "<b></b>";
+    tooltip-format = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
+    tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+    tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+    tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
+    on-click = "bluetui";
+  };
+
+  "bluetooth#status" = {
+    format-on = "";
+    format-off = "";
+    format-disabled = "";
+    format-connected = "<b>{num_connections}</b>";
+    format-connected-battery = "<small><b>{device_battery_percentage}%</b></small>";
+    tooltip-format = "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
+    tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+    tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+    tooltip-format-enumerate-connected-battery = "{device_alias}\t{device_address}\t{device_battery_percentage}%";
+    on-click = "bluetui";
+  };
+
 # Audio
 pulseaudio = {
   format = "{icon}";
@@ -146,7 +185,7 @@ pulseaudio = {
   };
   on-click = "volume mute";
   on-click-middle = "pavucontrol";
-  on-scroll-up = "pactl set-sink-volume @DEAFULT_SINK@ +5%";
+  on-scroll-up = "pactl set-sink-volume @DEFAULT_SINK@ +5%";
   on-scroll-down = "pactl set-sink-volume @DEFAULT_SINK@ -5%";
   smooth-scrolling-threshold = 1;
 };
@@ -156,9 +195,9 @@ pulseaudio = {
     format-source = "";
     format-source-muted = "";
     tooltip-format = "{volume}% {format_source} ";
-    on-click = "pactl set-source-mute 0 toggle";
-    on-scroll-down = "pactl set-source-volume 0 -1%";
-    on-scroll-up = "pactl set-source-volume 0 +1%";
+    on-click = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+    on-scroll-down = "pactl set-source-volume @DEFAULT_SOURCE@ -1%";
+    on-scroll-up = "pactl set-source-volume @DEFAULT_SOURCE@ +1%";
   };
   
   "pulseaudio/slider" = {
@@ -166,7 +205,8 @@ pulseaudio = {
     max = 140;
     orientation = "vertical";
   };
-#CPU
+
+# CPU
   "custom/cpu-icon" = {
     format = "󰻠";
     tooltip = false;
@@ -182,7 +222,30 @@ pulseaudio = {
     format = "<b>{usage}󱉸</b>";
     on-click = "foot btop";
   };
+# Notifications
 
+  "custom/notification" = {
+    tooltip = false;
+    format = "{icon}";
+    format-icons = {
+      notification = "<span foreground='red'><sup></sup></span>";
+      none = "";
+      dnd-notification = "<span foreground='red'><sup></sup></span>";
+      dnd-none = "";
+      inhibited-notification = "<span foreground='red'><sup></sup></span>";
+      inhibited-none = "";
+      dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+      dnd-inhibited-none = "";
+    };
+    
+    return-type = "json";
+    exec-if = "which swaync-client";
+    exec = "swaync-client -swb";
+    on-click = "swaync-client -t -sw";
+    on-click-right = "swaync-client -d -sw";
+    escape = true;
+  };
+    
   memory = {
     format = "<b>  \n{:2}󱉸</b>";
     tooltip = false;
@@ -241,6 +304,7 @@ pulseaudio = {
 
   
 # Icons
+
   "custom/drawer-up" = {
     format = "^";
     tooltip = false;
@@ -261,9 +325,8 @@ pulseaudio = {
        
     };
   };
-
+# styling
   programs.waybar.style = ''
-  @import "/home/kamasarugo/Nixy-Wixy/home-modules/colors.css";
 @define-color active @color4;
 
 * {
@@ -305,7 +368,6 @@ tooltip label {
   color: lighter(@active);
 }
 
-#submap,
 #tray>.needs-attention {
   animation-name: blink-active;
   animation-duration: 1s;
@@ -330,7 +392,7 @@ tooltip label {
   color: lighter(@active);
 }
 
-#info,
+#system-info,
 #clock,
 #battery,
 #gcpu,
@@ -341,7 +403,6 @@ tooltip label {
 #connections,
 #brightness,
 #power,
-#network.wifi,
 #custom-updates,
 #tray {
   border-radius: 4px;
@@ -369,7 +430,7 @@ tooltip label {
   padding-right: 4px;
 }
 
-#info,
+#system-info,
 #custom-weather,
 #tray {
   padding: 4px 0px 4px 0px;
