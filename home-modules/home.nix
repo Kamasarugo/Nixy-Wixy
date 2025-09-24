@@ -77,6 +77,7 @@ programs.floorp.enable = true;
   lutris
   protonup-qt
   wine
+  r2modman
   (
     vintagestory.overrideAttrs (old: rec {
     postInstall = ''

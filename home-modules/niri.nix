@@ -42,7 +42,8 @@ in {
       spawn-at-startup =[
         { command = [ "sh" "-c" "systemctl --user enable --now syncthingtray.service" ]; }
         { command = [ "sh" "-c" "systemctl --user enable --now hyprpaper.service" ]; }
-        { command = [ "sh" "-c" "systemctl --user enable --now waybar.service" ]; }
+      #  { command = [ "sh" "-c" "systemctl --user enable --now waybar.service" ]; }
+        { command = [ "sh" "-c" "systemctl --user enable --now waybar -s ./waybar.css"]; }
         { command = [ "xwayland-satellite" ]; }
         { command = [ "foot" "-s" ]; }
         { command = [ "${pkgs.networkmanagerapplet}/bin/nm-applet" "--indicator" ]; }
