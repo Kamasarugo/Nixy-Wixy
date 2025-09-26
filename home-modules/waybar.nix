@@ -327,6 +327,7 @@ pulseaudio = {
   };
 # styling
   programs.waybar.style = ''
+@import "/home/kamasarugo/Nixy-Wixy/home-modules/colors.css";
 @define-color active @color4;
 
 * {
@@ -392,6 +393,7 @@ tooltip label {
   color: lighter(@active);
 }
 
+#custom-notification,
 #system-info,
 #clock,
 #battery,
