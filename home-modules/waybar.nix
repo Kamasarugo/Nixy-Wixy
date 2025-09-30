@@ -261,9 +261,8 @@ pulseaudio = {
        
     };
   };
-
+#@import "/home/kamasarugo/Nixy-Wixy/home-modules/colors.css"; 
   programs.waybar.style = ''
-  @import "/home/kamasarugo/Nixy-Wixy/home-modules/colors.css";
 @define-color active @color4;
 
 * {
