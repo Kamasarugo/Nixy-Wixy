@@ -64,6 +64,7 @@ programs.floorp.enable = true;
   nixd
   nix-output-monitor
   nh
+  tailscale
 
   #fonts
   corefonts #Fonts
@@ -75,7 +76,7 @@ programs.floorp.enable = true;
   lutris
   protonup-qt
   wine
-  r2modman
+  r2modman #Mod Client
   (
     vintagestory.overrideAttrs (old: rec {
     postInstall = ''
