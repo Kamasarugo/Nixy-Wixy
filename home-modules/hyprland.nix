@@ -25,7 +25,7 @@ in {
  
   # IMPORTS #
   imports = [
-    ./waybar.nix
+    #./waybar.nix
 ];
   
   wayland.windowManager.hyprland.enable = true;
@@ -93,7 +93,7 @@ in {
     };
 
         exec-once = [
-          "systemctl --user enable --now waybar.service"
+          #"systemctl --user enable --now waybar.service"
          ]; 
 
         

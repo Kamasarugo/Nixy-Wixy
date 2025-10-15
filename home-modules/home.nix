@@ -47,6 +47,7 @@ programs.floorp.enable = true;
   #browsers
   inputs.zen-browser.packages."${system}".default
   floorp-bin
+  vivaldi
   
   #utils
   brightnessctl #Brightness Control
@@ -59,6 +60,7 @@ programs.floorp.enable = true;
   fuzzel #Dmenu
   dotool
   wf-recorder #Screen Recorder
+  hyprpaper #Wallpaper
   
   #tools
   nixd

@@ -10,7 +10,7 @@ let
   colors = config.lib.stylix.colors;
 in {
   imports = [
-    ./waybar.nix # bar
+    /home/kamasarugo/Nixy-Wixy/home-modules/waybar.nix # bar
   ];
 
   services.swaync.enable = true;
