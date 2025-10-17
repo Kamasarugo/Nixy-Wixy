@@ -59,12 +59,14 @@ programs.floorp.enable = true;
   fuzzel #Dmenu
   dotool
   wf-recorder #Screen Recorder
+  noisetorch
   
   #tools
   nixd
   nix-output-monitor
   nh
   tailscale
+  ydotool
 
   #fonts
   corefonts #Fonts
@@ -77,6 +79,7 @@ programs.floorp.enable = true;
   protonup-qt
   wine
   r2modman #Mod Client
+  modrinth-app
   (
     vintagestory.overrideAttrs (old: rec {
     postInstall = ''
@@ -88,6 +91,7 @@ programs.floorp.enable = true;
   #social
   vesktop #Discord Wrapper
   element-desktop #Matrix thingy
+  beeper
 
   #general
   spotify
