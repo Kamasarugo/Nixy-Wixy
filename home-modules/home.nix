@@ -60,12 +60,8 @@ programs.floorp.enable = true;
   fuzzel #Dmenu
   dotool
   wf-recorder #Screen Recorder
-<<<<<<< HEAD
   noisetorch
-=======
   hyprpaper #Wallpaper
->>>>>>> 384651e391998dbf500f42796adf8116cdbd4f3f
-  
   #tools
   nixd
   nix-output-monitor

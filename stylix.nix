@@ -2,7 +2,7 @@
 {
   stylix.enable = true;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-  stylix.image = /home/kamasarugo/Downloads/neon-2.png;
+  stylix.image = /home/kamasarugo/Downloads/landscape.jpg;
   stylix.fonts = {
     monospace = {
       package = pkgs.nerd-fonts.jetbrains-mono;
