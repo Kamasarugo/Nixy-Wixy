@@ -1,8 +1,9 @@
 { pkgs, config, stylix,  ... }:
 {
   stylix.enable = true;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml"; # Comment out to theme based on wallpaper
   stylix.image = /home/kamasarugo/Downloads/neon-2.png;
+  #stylix.polarity = "dark";
   stylix.fonts = {
     monospace = {
       package = pkgs.nerd-fonts.jetbrains-mono;
