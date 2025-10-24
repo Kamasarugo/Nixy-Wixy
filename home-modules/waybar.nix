@@ -29,6 +29,7 @@ in
       ];
 # Primary Module Groups
   "group/connections" = {
+    orientation = "inherit";
     modules = [
       "group/network"
       "group/bluetooth"
