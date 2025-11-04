@@ -3,10 +3,11 @@
 {
 imports = [
   ./hyprland.nix
-  ../stylix.nix
+  ../theme/stylix.nix
   ./niri.nix
   ./fish.nix
-  
+
+#  inputs.caelestia-shell.homeModules.default
   inputs.stylix.homeModules.stylix
 ];
 
@@ -26,6 +27,7 @@ programs.helix.settings.editor.indent-guides.render = true;
 programs.btop.enable = true;
 programs.fuzzel.enable = true;
 programs.floorp.enable = true;
+#programs.quickshell.enable = true;
 
   programs.git = {
     enable = true;
@@ -34,53 +36,59 @@ programs.floorp.enable = true;
     extraConfig.init.defaultBranch = "main";
     delta.enable = true; 
   };
-  
+
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
 
-  #productive
-  obsidian #Note taking app
+  inputs.caelestia-shell.packages.${pkgs.system}.with-cli
+
+  #editors
+  obsidian #note taking app
   libreoffice-fresh #MSOffice replacement
+  satty #screenshot editor
+  krita #image editor
+
   #browsers
-  inputs.zen-browser.packages."${system}".default
-  floorp-bin
-  vivaldi
+  floorp-bin #firefox wrapper
+  vivaldi # chromium
   
   #utils
-  brightnessctl #Brightness Control
-  hyprshot
-  ksnip #Screenshot
-  btop #Task Manger/Hardware Monitor
-  bluetui #Bluetooth
-  upower #Power Management
-  nemo #File Browser
-  fuzzel #Dmenu
-  dotool
-  wf-recorder #Screen Recorder
-  noisetorch
-  hyprpaper #Wallpaper
+  brightnessctl #brightness control
+  btop #task manager/hardware monitor
+  bluetui #bluetooth
+  upower #power management
+  nemo #file browser
+  fuzzel #dmenu
+  wf-recorder #screen recorder
+  noisetorch #noise suppresion
+  hyprpaper #wallpaper
+  bitwarden-desktop #password manager
+  dunst
+  quickshell
+
   #tools
   nixd
   nix-output-monitor
   nh
-  tailscale
-  ydotool
+  tailscale #vpn thingy
+  ydotool #input recorder and macro thing
+  wl-clipboard
 
   #fonts
-  corefonts #Fonts
+  corefonts
 
-  #games
-  steam
+  #Games
+  steam #If you don't know...
   heroic #Epic Games replacement thingy
-  prismlauncher #Minecraft Mod Launcher
-  lutris
-  protonup-qt
-  wine
+  prismlauncher #MC Mod Launcher
+  lutris #Game launcher thing
+  protonup-qt #Game compat.
+  wine #Game compat.
   r2modman #Mod Client
-  modrinth-app
+  modrinth-app #MC Mod launcher
   (
     vintagestory.overrideAttrs (old: rec {
     postInstall = ''
@@ -90,12 +98,26 @@ programs.floorp.enable = true;
   )
   
   #social
-  vesktop #Discord Wrapper
-  element-desktop #Matrix thingy
-  beeper
+  vesktop #discord Wrapper
+  element-desktop #matrix thingy
 
   #general
-  spotify
+  spotify #music
+
+
+  #sort later
+  ddcutil
+  app2unit
+  #libcava
+  lm_sensors
+  aubio
+  glibc
+  gcc
+  swappy
+  bash
+  cmake
+  ninja
+  pipewire
   
 ];
   home.file = {

@@ -42,8 +42,9 @@ in {
       spawn-at-startup =[
         { command = [ "sh" "-c" "systemctl --user enable --now syncthingtray.service" ]; }
         { command = [ "sh" "-c" "systemctl --user enable --now hyprpaper.service" ]; }
-        { command = [ "sh" "-c" "systemctl --user enable --now waybar.service" ]; }
+        #{ command = [ "sh" "-c" "systemctl --user enable --now waybar.service" ]; }
         { command = [ "xwayland-satellite" ]; }
+        { command = [ "caelestia-shell" ]; }
         { command = [ "${pkgs.networkmanagerapplet}/bin/nm-applet" "--indicator" ]; }
       ] ++ (
         if hostname == "nixos-desktop" then [
@@ -100,6 +101,12 @@ in {
 
       window-rules = [
         {
+          #matches = [
+          #{
+          #app-id = "steam";
+          #title = "^notificationtoasts_\\d+desktop$";
+          #}
+        #];
           geometry-corner-radius = let
             r = 10.0;
           in {
@@ -208,9 +215,10 @@ in {
         "${mod}+Period".action = consume-or-expel-window-right;
 
         # screenshotting
-        "${mod}+S".action = screenshot;
-        "${mod}+Shift+S".action = screenshot-window;
-        "${mod}+A".action = fish "wl-paste | satty -f - --fullscreen --copy-command 'wl-copy'";
+        "${mod}+S".action.screenshot = [];
+        "${mod}+Shift+S".action.screenshot-screen = [];
+        #"${mod}+A".action = fish "wl-paste | satty -f - --fullscreen --copy-command 'wl-copy'";
+        "${mod}+A".action = fish "wl-paste | satty -f - --right-click-copy --early-exit --copy-command 'wl-copy' --fullscreen --brush-smooth-history-size 5";
 
         # resize things
         "Mod+Equal".action = set-column-width "+10%";

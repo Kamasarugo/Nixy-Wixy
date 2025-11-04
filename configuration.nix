@@ -6,7 +6,7 @@
 
 {
   imports = [ # Include the results of the hardware scan.
-    ./stylix.nix
+    ./theme/stylix.nix
     
       inputs.home-manager.nixosModules.default
       inputs.stylix.nixosModules.stylix
@@ -113,6 +113,7 @@ home-manager = {
  # BASE CONFIG!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  environment.systemPackages = with pkgs; [
   helix
+  material-symbols
 ];
   programs.hyprland.enable = true; #enable hyprland
 
@@ -130,6 +131,7 @@ home-manager = {
   HandlePowerKeyLongPress = "ignore";
 };
 
+programs.noisetorch.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

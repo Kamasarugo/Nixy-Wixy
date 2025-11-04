@@ -327,7 +327,7 @@ pulseaudio = {
   };
 # styling
   programs.waybar.style = ''
-@import "/home/kamasarugo/Nixy-Wixy/home-modules/colors.css";
+@import "/home/kamasarugo/Nixy-Wixy/theme/colors.css";
 @define-color active @color4;
 
 * {
