@@ -124,7 +124,8 @@ home-manager = {
 
   programs.steam.enable = true;
   
-  services.displayManager.ly.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
 
   services.logind.settings.Login = {
   HandlePowerKey = "ignore";

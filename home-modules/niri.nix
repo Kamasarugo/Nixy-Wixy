@@ -42,9 +42,9 @@ in {
       spawn-at-startup =[
         { command = [ "sh" "-c" "systemctl --user enable --now syncthingtray.service" ]; }
         { command = [ "sh" "-c" "systemctl --user enable --now hyprpaper.service" ]; }
-        #{ command = [ "sh" "-c" "systemctl --user enable --now waybar.service" ]; }
+        { command = [ "sh" "-c" "systemctl --user enable --now waybar.service" ]; }
         { command = [ "xwayland-satellite" ]; }
-        { command = [ "caelestia-shell" ]; }
+       # { command = [ "caelestia-shell" ]; }
         { command = [ "${pkgs.networkmanagerapplet}/bin/nm-applet" "--indicator" ]; }
       ] ++ (
         if hostname == "nixos-desktop" then [
