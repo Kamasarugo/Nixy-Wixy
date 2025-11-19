@@ -123,9 +123,12 @@ home-manager = {
   };
 
   programs.steam.enable = true;
-  
+
+  #sddm
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.sddm.autoNumlock = true;
+
 
   services.logind.settings.Login = {
   HandlePowerKey = "ignore";
