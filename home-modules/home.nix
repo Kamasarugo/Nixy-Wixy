@@ -88,6 +88,7 @@ programs.floorp.enable = true;
   protonup-qt #Game compat.
   wine #Game compat.
   r2modman #Mod Client
+  badlion-client #MC Mod Launcher
   (
     vintagestory.overrideAttrs (old: rec {
     postInstall = ''
