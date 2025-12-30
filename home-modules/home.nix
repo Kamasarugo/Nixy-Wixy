@@ -43,7 +43,7 @@ programs.floorp.enable = true;
   # environment.
   home.packages = with pkgs; [
 
-  inputs.caelestia-shell.packages.${pkgs.system}.with-cli
+  #inputs.caelestia-shell.packages.${pkgs.system}.with-cli
 
   #editors
   obsidian #note taking app
@@ -76,6 +76,7 @@ programs.floorp.enable = true;
   tailscale #vpn thingy
   ydotool #input recorder and macro thing
   wl-clipboard
+  solaar #Logitech
 
   #fonts
   corefonts
@@ -100,24 +101,25 @@ programs.floorp.enable = true;
   #social
   vesktop #discord Wrapper
   element-desktop #matrix thingy
+  #nheko #matrix thingy
 
   #general
   spotify #music
 
 
   #sort later
-  ddcutil
-  app2unit
+  #ddcutil
+  #app2unit
   #libcava
-  lm_sensors
-  aubio
-  glibc
-  gcc
-  swappy
-  bash
-  cmake
-  ninja
-  pipewire
+  #lm_sensors
+  #aubio
+  #glibc
+  #gcc
+  #swappy
+  #bash
+  #cmake
+  #ninja
+  #pipewire
   
 ];
   home.file = {
