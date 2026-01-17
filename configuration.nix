@@ -114,6 +114,7 @@ home-manager = {
  environment.systemPackages = with pkgs; [
   helix
   material-symbols
+  #inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 ];
   programs.hyprland.enable = true; #enable hyprland
 

@@ -4,18 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    caelestia-cli = {
-      url = "github:caelestia-dots/cli";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -34,6 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
    };
 
+   noctalia = {
+     url = "github:noctalia-dev/noctalia-shell";
+     inputs.nixpkgs.follows = "nixpkgs";
+   };
+
   };
  outputs = { nixpkgs, niri, ... }@inputs:
   let
@@ -49,6 +44,7 @@
         modules = [
           ./devices/laptop/hardware-configuration.nix
           ./configuration.nix
+          ./home-modules/noctalia.nix
           ];
           
       };
@@ -60,6 +56,7 @@
         modules = [
           ./devices/pc/hardware-configuration.nix
           ./configuration.nix
+          ./home-modules/noctalia.nix
         ];
       };
     };

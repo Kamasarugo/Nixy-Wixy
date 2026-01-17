@@ -27,7 +27,8 @@ programs.helix.settings.editor.indent-guides.render = true;
 programs.btop.enable = true;
 programs.fuzzel.enable = true;
 programs.floorp.enable = true;
-#programs.quickshell.enable = true;
+#programs.noctalia-shell.enable = true;
+programs.quickshell.enable = true;
 
   programs.git = {
     enable = true;
@@ -66,10 +67,7 @@ programs.floorp.enable = true;
   noisetorch #noise suppresion
   hyprpaper #wallpaper
   bitwarden-desktop #password manager
-  dunst
   quickshell
-
-  #tools
   nixd
   nix-output-monitor
   nh
@@ -105,6 +103,11 @@ programs.floorp.enable = true;
 
   #general
   spotify #music
+
+  #Noctalia
+  cliphist
+  gpu-screen-recorder
+  xdg-desktop-portal-wlr
 
 
   #sort later

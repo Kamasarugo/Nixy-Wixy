@@ -1,7 +1,8 @@
 { config , pkgs , osConfig, ... }:
 let
   mod = "Super";
-  menu = "fuzzel";
+  #menu = "fuzzel";
+  menu = "noctalia-shell ipc call launcher toggle";
   terminal = "kitty";
   alt_terminal = "foot";
 
@@ -42,9 +43,9 @@ in {
       spawn-at-startup =[
         { command = [ "sh" "-c" "systemctl --user enable --now syncthingtray.service" ]; }
         { command = [ "sh" "-c" "systemctl --user enable --now hyprpaper.service" ]; }
-        { command = [ "sh" "-c" "systemctl --user enable --now waybar.service" ]; }
+#        { command = [ "sh" "-c" "systemctl --user enable --now waybar.service" ]; }
         { command = [ "xwayland-satellite" ]; }
-       # { command = [ "caelestia-shell" ]; }
+        { command = [ "noctalia-shell" ]; }
         { command = [ "${pkgs.networkmanagerapplet}/bin/nm-applet" "--indicator" ]; }
       ] ++ (
         if hostname == "nixos-desktop" then [
@@ -177,7 +178,8 @@ in {
         "${mod}+Shift+Return".action = fish alt_terminal;
         "${mod}+Shift+M".action = quit;
         "${mod}+T".action = fish "bemoji -c -n";
-#        "${mod}+P".action = fish "fish ${../scripts/lock-screen.fish}";
+        "${mod}+P".action = fish "noctalia-shell ipc call lockScreen lock";
+        "${mod}+R".action = fish "noctalia-shell ipc call screenRecorder toggle";
 #        "${mod}+Shift+C".action = fish "fish ${../scripts/command-runner.fish}";
         "${mod}+N".action = spawn "footclient" "numbat";
         "${mod}+Y".action = fish "notify-send\"$(niri msg focused-window)\"";
