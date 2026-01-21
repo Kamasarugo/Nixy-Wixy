@@ -9,10 +9,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hytale-launcher = {
+      url = "github:JPyke3/hytale-launcher-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
-      };
+    };
 
     stylix = {
       url = "github:danth/stylix";
@@ -22,12 +27,12 @@
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
-   };
+    };
 
-   noctalia = {
-     url = "github:noctalia-dev/noctalia-shell";
-     inputs.nixpkgs.follows = "nixpkgs";
-   };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
  outputs = { nixpkgs, niri, ... }@inputs:

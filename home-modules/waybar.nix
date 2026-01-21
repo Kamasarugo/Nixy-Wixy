@@ -4,7 +4,7 @@ let
 in
 {
   programs.waybar = {
-    enable = true;
+    enable = false;
     systemd.enable = true;
 
     settings.main-bar = {
