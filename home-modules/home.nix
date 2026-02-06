@@ -32,6 +32,7 @@ programs = {
   quickshell.enable = true;
   delta.enableGitIntegration = true;
   delta.enable = true;
+  yazi.enable = true;
 
   git = {
     enable = true;
@@ -47,24 +48,18 @@ programs = {
 
   home.packages = with pkgs; [
 
-  #editors
   obsidian #note taking app
   libreoffice-fresh #MSOffice replacement
   satty #screenshot editor
   krita #image editor
-
-  #browsers
   floorp-bin #firefox wrapper
   vivaldi # chromium
-  
-  #utils
   brightnessctl #brightness control
   btop #task manager/hardware monitor
   bluetui #bluetooth
   upower #power management
-  nemo #file browser
+  yazi #tty file browser
   fuzzel #dmenu
-  wf-recorder #screen recorder
   noisetorch #noise suppresion
   hyprpaper #wallpaper
   bitwarden-desktop #password manager
@@ -72,24 +67,20 @@ programs = {
   nixd
   nix-output-monitor
   nh
-  tailscale #vpn thingy
-  ydotool #input recorder and macro thing
+  tailscale #vpn
+  ydotool #input recorder and macro
   wl-clipboard
   solaar #Logitech
-
-  #fonts
   corefonts
-
-  #Games
   steam #If you don't know...
   heroic #Epic Games replacement thingy
   prismlauncher #MC Mod Launcher
   lutris #Game launcher thing
   protonup-qt #Game compat.
+  protonplus #Game compat.
   wine #Game compat.
   r2modman #Mod Client
-  badlion-client #MC Mod Launcher
-  (
+    (
     vintagestory.overrideAttrs (old: rec {
     postInstall = ''
     cp -r ${../other/vintageStory}/* $out/share/vintagestory/
@@ -97,18 +88,15 @@ programs = {
   })
   )
   inputs.hytale-launcher.packages.${pkgs.system}.default
-  #social
   vesktop #discord Wrapper
   element-desktop #matrix thingy
-  #nheko #matrix thingy
-
-  #general
+ # nhecko #matrix thingy
   spotify #music
-
   cliphist
   gpu-screen-recorder
   xdg-desktop-portal-wlr
   cloudflare-warp
+  jellyfin-media-player
 ];
   home.file = {
   };

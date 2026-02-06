@@ -1,8 +1,8 @@
 { config , pkgs , osConfig, ... }:
 let
   mod = "Super";
-  #menu = "fuzzel";
-  menu = "noctalia-shell ipc call launcher toggle";
+  menu = "fuzzel";
+  # menu = "noctalia-shell ipc call launcher toggle";
   terminal = "kitty";
   alt_terminal = "foot";
 
@@ -177,14 +177,11 @@ in {
         "${mod}+Return".action = fish terminal;
         "${mod}+Shift+Return".action = fish alt_terminal;
         "${mod}+Shift+M".action = quit;
-        "${mod}+T".action = fish "bemoji -c -n";
         "${mod}+P".action = fish "noctalia-shell ipc call lockScreen lock";
         "${mod}+R".action = fish "noctalia-shell ipc call screenRecorder toggle";
 #        "${mod}+Shift+C".action = fish "fish ${../scripts/command-runner.fish}";
-        "${mod}+N".action = spawn "footclient" "numbat";
         "${mod}+Y".action = fish "notify-send\"$(niri msg focused-window)\"";
         "${mod}+Shift+Y".action = fish "set win (niri msg focused-window); wl-copy $win; notify-send \"$win\"";
-        "${mod}+Z".action = spawn "${pkgs.woomer}/bin/woomer";
         "${mod}+V".action = spawn "pavucontrol";
 
         # reorient
@@ -193,6 +190,7 @@ in {
         "${mod}+Shift+F".action = fullscreen-window;
         "${mod}+Space".action = toggle-window-floating;
         "${mod}+W".action = toggle-column-tabbed-display;
+        "${mod}+O".action = toggle-overview;
 
         # open things but better!!!
 #        "${mod}+1".action = spawn "floorp";

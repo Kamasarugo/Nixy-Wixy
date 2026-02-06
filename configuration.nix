@@ -10,6 +10,8 @@
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  documentation.man.generateCaches = false;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -39,6 +41,8 @@
     dates = "daily";
     options = "--delete-older-than 5d";
   };
+
+  
   
   networking.networkmanager.enable = true;
 
@@ -108,6 +112,16 @@ nixpkgs.config.allowUnfree = true;
    steam.enable = true;
 
    noisetorch.enable = true;
+
+   nh = {
+     enable = true;
+     # flake = "/home/kamasarugo/Nixy-Wixy";
+     clean = {
+       enable = true;
+       dates  = "daily";
+       extraArgs = "--keep 5 --no-gcroots --optimise";
+     };
+   };
    
  };
 

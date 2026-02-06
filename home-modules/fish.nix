@@ -59,12 +59,10 @@
 
       update-flake = {
         body = ''
-          sudo echo sudoed
           cd ~/Nixy-Wixy
-          nix flake update --commit-lock-file
+          nix flake update
           git push & disown
-          loago do update-flake
-          nh os switch'';
+          nh os switch . -- --impure'';
       };
     };
   };
