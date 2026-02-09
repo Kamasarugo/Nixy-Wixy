@@ -34,15 +34,6 @@
     persistent = true;
     dates = [ "daily" ];
   };
-
-  nix.gc = {
-    automatic = true;
-    persistent = true;
-    dates = "daily";
-    options = "--delete-older-than 5d";
-  };
-
-  
   
   networking.networkmanager.enable = true;
 
@@ -143,6 +134,7 @@ nixpkgs.config.allowUnfree = true;
     thermald.enable = true;
 
     flatpak.enable = true;
+    openssh.enable = true;
   };
 
   system.stateVersion = "24.11";
