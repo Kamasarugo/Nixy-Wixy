@@ -6,8 +6,7 @@ imports = [
   ../theme/stylix.nix
   ./niri.nix
   ./fish.nix
-
-#  inputs.caelestia-shell.homeModules.default
+  
   inputs.stylix.homeModules.stylix
 ];
 
@@ -59,6 +58,7 @@ programs = {
   bluetui #bluetooth
   upower #power management
   yazi #tty file browser
+  nemo #file browser
   fuzzel #dmenu
   noisetorch #noise suppresion
   hyprpaper #wallpaper
@@ -95,8 +95,11 @@ programs = {
   cliphist
   gpu-screen-recorder
   xdg-desktop-portal-wlr
+  pipewire
   cloudflare-warp
   jellyfin-media-player
+
+  obs-studio
 ];
   home.file = {
   };
