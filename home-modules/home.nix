@@ -47,31 +47,40 @@ programs = {
 
   home.packages = with pkgs; [
 
+# productivity
   obsidian #note taking app
   libreoffice-fresh #MSOffice replacement
-  satty #screenshot editor
-  krita #image editor
   floorp-bin #firefox wrapper
-  vivaldi # chromium
+  vivaldi #chromium
+  yazi #tty file editor
+  nemo #file editor
+
+# tools
+  satty #screenshot editor 
+  krita #image editor
   brightnessctl #brightness control
   btop #task manager/hardware monitor
   bluetui #bluetooth
   upower #power management
-  yazi #tty file browser
-  nemo #file browser
-  fuzzel #dmenu
   noisetorch #noise suppresion
-  hyprpaper #wallpaper
-  bitwarden-desktop #password manager
-  quickshell
-  nixd
-  nix-output-monitor
-  nh
   tailscale #vpn
+  solaar #logitech
+  jellyfin-media-player #what it says
+  obs-studio
+  
+# utils
+  fuzzel #dmenu
+  bitwarden-desktop #password manager
+  quickshell #use it like waybar
+  nixd
+  nix-output-monitor #better revuild util
+  nh #better rebuild
   ydotool #input recorder and macro
   wl-clipboard
-  solaar #Logitech
-  corefonts
+  corefonts #font
+  pipewire #audio
+
+# games
   steam #If you don't know...
   heroic #Epic Games replacement thingy
   prismlauncher #MC Mod Launcher
@@ -88,18 +97,12 @@ programs = {
   })
   )
   inputs.hytale-launcher.packages.${pkgs.system}.default
+# honestly idk
   vesktop #discord Wrapper
   element-desktop #matrix thingy
- # nhecko #matrix thingy
   spotify #music
-  cliphist
-  gpu-screen-recorder
-  xdg-desktop-portal-wlr
-  pipewire
-  cloudflare-warp
-  jellyfin-media-player
+ # nhecko #matrix thingy
 
-  obs-studio
 ];
   home.file = {
   };
