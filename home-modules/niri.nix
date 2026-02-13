@@ -18,9 +18,7 @@ in {
 
   home.packages = with pkgs; [
     ksnip
-    playerctl
-    swayidle           
-    swaylock-effects   
+    playerctl          
     xwayland-satellite
     pulseaudio # pactl for toggle mute
     pavucontrol
@@ -99,15 +97,8 @@ in {
         };
       };
 
-
       window-rules = [
         {
-          #matches = [
-          #{
-          #app-id = "steam";
-          #title = "^notificationtoasts_\\d+desktop$";
-          #}
-        #];
           geometry-corner-radius = let
             r = 10.0;
           in {
@@ -117,6 +108,14 @@ in {
             bottom-right = r;
           };
           clip-to-geometry = true;
+
+        }
+        {   
+        matches = [
+          { app-id = "qalculate-qt";}
+        ];
+        open-floating = true;
+        
         }
       ];
 
@@ -183,6 +182,8 @@ in {
         "${mod}+Y".action = fish "notify-send\"$(niri msg focused-window)\"";
         "${mod}+Shift+Y".action = fish "set win (niri msg focused-window); wl-copy $win; notify-send \"$win\"";
         "${mod}+V".action = spawn "pavucontrol";
+
+        "${mod}+C".action = spawn "qalculate-qt";
 
         # reorient
         "${mod}+Q".action = close-window;

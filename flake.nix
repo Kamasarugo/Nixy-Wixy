@@ -39,7 +39,7 @@
   let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   in {
     nixosConfigurations = {
       nixos-laptop = lib.nixosSystem {

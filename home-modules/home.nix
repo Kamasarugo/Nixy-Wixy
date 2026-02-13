@@ -67,7 +67,9 @@ programs = {
   solaar #logitech
   jellyfin-media-player #what it says
   obs-studio
-  
+  libqalculate #calculator library
+  qalculate-qt
+    
 # utils
   fuzzel #dmenu
   bitwarden-desktop #password manager

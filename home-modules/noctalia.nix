@@ -74,6 +74,9 @@
                   removeMargins = false;
                 };
               }
+              {
+                id = "plugin:todo";
+              }
             ];
             
             left = [
@@ -119,9 +122,6 @@
                 useFixedWidth = false;
                 visualizerType = "linear";
                 }
-              ];
-             
-             right = [
               {
                 colorizeIcons = false;
                 hideMode = "hidden";
@@ -131,9 +131,11 @@
                 showIcon = true;
                 useFixedWidth = false;
                 }
+              ];
+             
+             right = [
               {
-                displayMode  =  "onhover";
-                id = "Timer";
+                id = "plugin:timer";
                 }
               {
                 id = "WallpaperSelector";
@@ -532,7 +534,7 @@
           };
 
         wallpaper = {
-          directory = "/home/kamasarugo/Downloads/Wallpapers";
+          directory = "../../wallpapers";
           enableMultiMonitorDirectories = false;
           enabled = true;
           fillColor = "#000000";

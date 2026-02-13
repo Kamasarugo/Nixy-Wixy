@@ -61,7 +61,6 @@
   };
 
   users.defaultUserShell = pkgs.fish;
-  programs.fish.enable = true;
 
   users.users.kamasarugo = {
     isNormalUser = true;
@@ -100,6 +99,8 @@ nixpkgs.config.allowUnfree = true;
    niri.enable  = true;
    niri.package = pkgs.niri-unstable;
 
+   fish.enable = true;
+
    steam.enable = true;
 
    noisetorch.enable = true;
@@ -122,6 +123,7 @@ nixpkgs.config.allowUnfree = true;
         enable = true;
         wayland.enable = true;
         autoNumlock = true;
+        theme = "sddm-astronaut-theme";
       };
       
     };
