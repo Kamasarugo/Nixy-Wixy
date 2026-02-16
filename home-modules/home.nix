@@ -69,6 +69,7 @@ programs = {
   obs-studio
   libqalculate #calculator library
   qalculate-qt
+  waypipe
     
 # utils
   fuzzel #dmenu
