@@ -137,7 +137,7 @@ nixpkgs.config.allowUnfree = true;
 
     flatpak.enable = true;
     openssh.enable = true;
-    
+    upower.enable = true;
   };
 
   system.stateVersion = "24.11";

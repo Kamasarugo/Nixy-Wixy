@@ -138,9 +138,6 @@
                 id = "plugin:timer";
                 }
               {
-                id = "WallpaperSelector";
-                }
-              {
                 displayMode = "onhover";
                 id = "Bluetooth";
                 }
@@ -534,7 +531,7 @@
           };
 
         wallpaper = {
-          directory = "../../wallpapers";
+          directory = "../wallpapers";
           enableMultiMonitorDirectories = false;
           enabled = true;
           fillColor = "#000000";
