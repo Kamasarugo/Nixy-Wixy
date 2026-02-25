@@ -49,15 +49,16 @@ programs = {
 
 # productivity
   obsidian #note taking app
-  libreoffice-fresh #MSOffice replacement
+  libreoffice-fresh #office replacement
   floorp-bin #firefox wrapper
   vivaldi #chromium
   yazi #tty file editor
   nemo #file editor
+  # vscode #IDE
 
 # tools
   satty #screenshot editor 
-  krita #image editor
+  # krita #image editor
   brightnessctl #brightness control
   btop #task manager/hardware monitor
   bluetui #bluetooth
@@ -68,30 +69,33 @@ programs = {
   jellyfin-media-player #what it says
   obs-studio
   libqalculate #calculator library
-  qalculate-qt
-  waypipe
+  qalculate-qt #calculator
+  waypipe #better ssh for DE
     
 # utils
   fuzzel #dmenu
   bitwarden-desktop #password manager
   quickshell #use it like waybar
   nixd
-  nix-output-monitor #better revuild util
+  nix-output-monitor #better rebuild util
   nh #better rebuild
   ydotool #input recorder and macro
   wl-clipboard
   corefonts #font
   pipewire #audio
+  ty #python type checker
+  python3
 
 # games
-  steam #If you don't know...
-  heroic #Epic Games replacement thingy
+  steam #if you don't know...
+  heroic #epic games replacement thingy
   prismlauncher #MC Mod Launcher
-  lutris #Game launcher thing
-  protonup-qt #Game compat.
-  protonplus #Game compat.
-  wine #Game compat.
-  r2modman #Mod Client
+  lutris #game launcher thing
+  protonup-qt #game compat.
+  protonplus #game compat.
+  wine #game compat.
+  r2modman #mod Client
+  xivlauncher #ffxiv
     (
     vintagestory.overrideAttrs (old: rec {
     postInstall = ''
@@ -101,7 +105,7 @@ programs = {
   )
   inputs.hytale-launcher.packages.${pkgs.system}.default
 # honestly idk
-  vesktop #discord Wrapper
+  vesktop #discord wrapper
   element-desktop #matrix thingy
   spotify #music
  # nhecko #matrix thingy
