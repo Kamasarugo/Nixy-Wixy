@@ -11,20 +11,24 @@
   networking.hostName = "nixos-desktop";
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"  ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  hardware.graphics = {
-    enable = true;
-    };
-
+  boot.kernelParams = ["nvidia-drm.modeset=1"];
+  services.xserver.videoDrivers = ["nvidia"];
+  hardware.graphics.enable = true;
+    
+   boot.blacklistedKernelModules = [ "nouveau"];
+  
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = true; 
+    powerManagement.enable = false; 
     open = false;                  
     nvidiaSettings = false;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/55ddbff1-aa50-45ce-9d6d-ef512aa43221";

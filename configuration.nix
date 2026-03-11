@@ -54,12 +54,6 @@
     LC_TIME = "en_AU.UTF-8";
   };
 
-  # Keymap
-  services.xserver.xkb = {
-    layout = "au";
-    variant = "";
-  };
-
   users.defaultUserShell = pkgs.fish;
 
   users.users.kamasarugo = {
@@ -70,6 +64,7 @@
   };
 
     environment.sessionVariables = {
+      LD_LIBRARY_PATH = [ "${pkgs.xorg.libXcursor}/lib" "${pkgs.xorg.libXi}/lib"];
     # flatpak dirs
     XDG_DATA_DIRS = [
       "$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
@@ -91,9 +86,15 @@ nixpkgs.config.allowUnfree = true;
  environment.systemPackages = with pkgs; [
   helix
   material-symbols
+  xwayland-satellite
+  xwayland
+  xorg.libXcursor
+  xorg.libXi
   #inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 ];
  programs = {
+   
+   xwayland.enable = true;
    hyprland.enable = true;
    
    niri.enable  = true;
@@ -118,12 +119,21 @@ nixpkgs.config.allowUnfree = true;
  };
 
   services = {
+
+    xserver = {
+      enable = true;
+      xkb = {
+        layout = "au";
+        variant = "";
+        };
+      };
+  
+
     displayManager = {
       sddm = {
         enable = true;
-        wayland.enable = true;
+        wayland.enable = false;
         autoNumlock = true;
-        theme = "sddm-astronaut-theme";
       };
       
     };

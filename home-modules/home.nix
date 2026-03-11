@@ -84,6 +84,7 @@ programs = {
   corefonts #font
   pipewire #audio
   ty #python type checker
+  ruff
   python3
 
 # games
