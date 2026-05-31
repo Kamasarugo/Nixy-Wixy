@@ -8,5 +8,14 @@
         line-number = "relative";
       };
     };
+    languages.language = [
+      {
+        name = "python":
+        rulers = [
+          80
+          100
+        ];
+      }
+    ];
   };
 }

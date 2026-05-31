@@ -85,37 +85,30 @@ programs = {
   pipewire #audio
   ty #python type checker
   ruff
-  python3
-  
-  python313Packages.numpy
-  python313Packages.pandas
-  python313Packages.matplotlib
-  python313Packages.scipy
-  wireguard-tools
 
 # games
   steam #if you don't know...
   heroic #epic games replacement thingy
   prismlauncher #MC Mod Launcher
-  lutris #game launcher thing
+  # lutris #game launcher thing
   protonup-qt #game compat.
   protonplus #game compat.
   wine #game compat.
   r2modman #mod Client
   xivlauncher #ffxiv
-    (
-    vintagestory.overrideAttrs (old: rec {
-    postInstall = ''
-    cp -r ${../other/vintageStory}/* $out/share/vintagestory/
-    '';
-  })
-  )
-  inputs.hytale-launcher.packages.${pkgs.system}.default
+#    (
+#    vintagestory.overrideAttrs (old: rec {
+#    postInstall = ''
+#    cp -r ${../other/vintageStory}/* $out/share/vintagestory/
+#    '';
+#  })
+#  )
+  # inputs.hytale-launcher.packages.${pkgs.system}.default
 # honestly idk
   vesktop #discord wrapper
   element-desktop #matrix thingy
   spotify #music
- # nhecko #matrix thingy
+  # nheko #matrix thingy
 
 ];
   home.file = {
