@@ -26,6 +26,9 @@
  
    nixpkgs.overlays = [
     inputs.niri.overlays.niri
+    (final: prev: {
+    noctalia = inputs.nixpkgs-old.legacyPackages.${prev.system}.noctalia;
+    })
   ];
 
   # storage optimisation
@@ -151,6 +154,13 @@ nixpkgs.config = {
     logind.settings.Login = {
       HandlePowerKey = "ignore";
       HandlePowerKeyLongPress = "ignore";
+    };
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+      wireplumber.enable = true;
     };
 
     thermald.enable = true;
