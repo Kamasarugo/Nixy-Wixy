@@ -10,7 +10,7 @@
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  documentation.man.generateCaches = false;
+  documentation.man.cache.enable = false;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -86,7 +86,13 @@ home-manager = {
   };
 };
 
-nixpkgs.config.allowUnfree = true;
+nixpkgs.config = {
+  allowUnfree = true;
+  permittedInsecurePackages = [
+    "electron-39.8.10"
+    "electron-40.10.5"
+  ];
+};
   
  environment.systemPackages = with pkgs; [
   helix
@@ -95,11 +101,10 @@ nixpkgs.config.allowUnfree = true;
   xwayland
   xorg.libXcursor
   xorg.libXi
-  #inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+  inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 ];
  programs = {
-   
-   xwayland.enable = true;
+
    hyprland.enable = true;
    
    niri.enable  = true;

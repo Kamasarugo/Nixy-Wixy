@@ -11,7 +11,7 @@ let
   colors = config.lib.stylix.colors;
 in {
   imports = [
-    ./waybar.nix # bar
+    # ./waybar.nix # bar
   ];
 
   services.swaync.enable = true;

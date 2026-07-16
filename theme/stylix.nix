@@ -23,7 +23,7 @@
   };
 
   stylix.targets.qt.enable = true;
-
+  
   stylix.cursor = {
     package = pkgs.capitaine-cursors-themed;
     name = "Capitaine Cursors (Gruvbox)";

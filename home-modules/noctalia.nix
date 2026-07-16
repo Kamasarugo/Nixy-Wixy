@@ -8,7 +8,7 @@
     ];
 
     # configure options
-    programs.noctalia-shell = {
+    programs.noctalia= {
       enable = true;
       settings = {
         # configure noctalia here
@@ -31,7 +31,7 @@
           showCategories = true;
           showIconBackground = true;
           sortByMostUsed = true;
-          terminalCommand = "noctoria-launcher";
+          terminalCommand = "noctaria-launcher";
           useApp2Unit = false;
           viewMode = "list";
           };
@@ -518,7 +518,7 @@
           bluetoothDetailsViewMode = "grid";
           bluetoothHideUnnamedDevices = false;
           boxBorderEnabled = false;
-          ontDefault = "Inter Variable";
+          fontDefault = "Inter Variable";
           fontDefaultScale = 1;
           fontFixed = lib.mkForce "JetBrainsMono Nerd Font Mono";
           fontFixedScale = 1;

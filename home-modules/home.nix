@@ -16,7 +16,13 @@ imports = [
     "DejaVu Sans"
   ];
     
-nixpkgs.config.allowUnfree = true;
+nixpkgs.config = {
+  allowUnfree = true;
+  permittedInsecurePackages = [
+    "electron-39.8.10"
+    "electron-40.10.5"
+    ];
+  };
 
 programs = {
   wofi.enable = true;
@@ -52,7 +58,6 @@ programs = {
   libreoffice-fresh #office replacement
   floorp-bin #firefox wrapper
   vivaldi #chromium
-  yazi #tty file editor
   nemo #file editor
   # vscode #IDE
 
@@ -60,11 +65,8 @@ programs = {
   satty #screenshot editor 
   # krita #image editor
   brightnessctl #brightness control
-  btop #task manager/hardware monitor
   bluetui #bluetooth
   upower #power management
-  noisetorch #noise suppresion
-  tailscale #vpn
   solaar #logitech
   jellyfin-media-player #what it says
   obs-studio
@@ -73,21 +75,16 @@ programs = {
   waypipe #better ssh for DE
     
 # utils
-  fuzzel #dmenu
   bitwarden-desktop #password manager
-  quickshell #use it like waybar
   nixd
   nix-output-monitor #better rebuild util
-  nh #better rebuild
   ydotool #input recorder and macro
   wl-clipboard
   corefonts #font
-  pipewire #audio
   ty #python type checker
   ruff
 
 # games
-  steam #if you don't know...
   heroic #epic games replacement thingy
   prismlauncher #MC Mod Launcher
   # lutris #game launcher thing
