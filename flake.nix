@@ -49,7 +49,7 @@
         modules = [
           ./devices/laptop/hardware-configuration.nix
           ./configuration.nix
-          ./home-modules/noctalia.nix
+          ./home-modules/noctalia.toml
           ];
           
       };
@@ -61,7 +61,7 @@
         modules = [
           ./devices/pc/hardware-configuration.nix
           ./configuration.nix
-          ./home-modules/noctalia.nix
+          ./home-modules/noctalia.toml
         ];
       };
     };

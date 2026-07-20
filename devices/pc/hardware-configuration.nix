@@ -44,6 +44,7 @@
   fileSystems."/home/kamasarugo/hdd" = {
     device = "/dev/disk/by-uuid/e57e578b-047c-4363-b364-f63b8f83eac9";
     options = [ "users" "exec" "nofail" ];
+    fsType = "ext4";
   };
 
   swapDevices = [ ];
