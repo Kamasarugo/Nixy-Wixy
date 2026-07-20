@@ -8,7 +8,7 @@
     ];
 
     # configure options
-    programs.noctalia= {
+    programs.noctalia = {
       enable = true;
       settings = {
         # configure noctalia here

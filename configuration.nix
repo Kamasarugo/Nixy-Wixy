@@ -170,6 +170,8 @@ nixpkgs.config = {
     upower.enable = true;
   };
 
+  security.rtkit.enable = true;
+
   system.stateVersion = "24.11";
   
 }

@@ -46,7 +46,7 @@ in {
         { command = [ "sh" "-c" "systemctl --user enable --now hyprpaper.service" ]; }
 #        { command = [ "sh" "-c" "systemctl --user enable --now waybar.service" ]; }
         { command = [ "xwayland-satellite" ]; }
-        { command = [ "noctalia-shell" ]; }
+        { command = [ "noctalia" ]; }
         { command = [ "${pkgs.networkmanagerapplet}/bin/nm-applet" "--indicator" ]; }
       ] ++ (
         if hostname == "nixos-desktop" then [
