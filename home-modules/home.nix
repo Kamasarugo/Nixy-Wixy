@@ -33,7 +33,6 @@ programs = {
   btop.enable = true;
   fuzzel.enable = true;
   floorp.enable = true;
-  # noctalia-shell.enable = true;
   quickshell.enable = true;
   delta.enableGitIntegration = true;
   delta.enable = true;
