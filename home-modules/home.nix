@@ -105,6 +105,9 @@ programs = {
   element-desktop #matrix thingy
   spotify #music
   # nheko #matrix thingy
+  #
+  # UNI
+  logisim-evolution
 
 ];
   home.file = {
