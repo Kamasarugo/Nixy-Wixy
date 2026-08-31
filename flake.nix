@@ -34,8 +34,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    openlogi = {
+      url = "github:AprilNEA/OpenLogi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
- outputs = { nixpkgs, niri, ... }@inputs:
+ outputs = { nixpkgs, niri, openlogi, ... }@inputs:
   let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
@@ -50,8 +55,7 @@
           ./devices/laptop/hardware-configuration.nix
           ./configuration.nix
           ./home-modules/noctalia.nix
-          ];
-          
+           ];
       };
 
       nixos-desktop = lib.nixosSystem {
@@ -62,6 +66,16 @@
           ./devices/pc/hardware-configuration.nix
           ./configuration.nix
           ./home-modules/noctalia.nix
+          openlogi.nixosModules.default
+            {
+              environment.systemPackages = [
+                openlogi.packages.x86_64-linux.default
+              ];
+              programs.openlogi = {
+                  enable = true;
+                  launchAtLogin = true;
+              };
+            }
         ];
       };
     };

@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports = [
@@ -72,7 +72,11 @@
   };
 
     environment.sessionVariables = {
-      LD_LIBRARY_PATH = [ "${pkgs.xorg.libXcursor}/lib" "${pkgs.xorg.libXi}/lib"];
+      # LD_LIBRARY_PATH = [ "${pkgs.libXcursor}/lib" "${pkgs.libXi}/lib"];
+      LD_LIBRARY_PATH = lib.makeLibraryPath [
+        pkgs.libXcursor
+        pkgs.libXi
+      ];
     # flatpak dirs
     XDG_DATA_DIRS = [
       "$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
@@ -102,8 +106,8 @@ nixpkgs.config = {
   material-symbols
   xwayland-satellite
   xwayland
-  xorg.libXcursor
-  xorg.libXi
+  libXcursor
+  libXi
   inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 ];
  programs = {
@@ -132,7 +136,7 @@ nixpkgs.config = {
  };
 
   services = {
-
+    
     xserver = {
       enable = true;
       xkb = {

@@ -28,7 +28,10 @@ programs = {
   wofi.enable = true;
   kitty.enable = true;
   helix.enable = true;
-  firefox.enable = true;
+  firefox = {
+    enable =  true;
+    configPath = ".mozilla/firefox";
+  };
   helix.settings.editor.indent-guides.render = true;
   btop.enable = true;
   fuzzel.enable = true;
@@ -36,7 +39,10 @@ programs = {
   quickshell.enable = true;
   delta.enableGitIntegration = true;
   delta.enable = true;
-  yazi.enable = true;
+  yazi = {
+    enable = true;
+    shellWrapperName = "y";
+  };
 
   git = {
     enable = true;
@@ -66,13 +72,12 @@ programs = {
   brightnessctl #brightness control
   bluetui #bluetooth
   upower #power management
-  solaar #logitech
   jellyfin-media-player #what it says
   obs-studio
   libqalculate #calculator library
   qalculate-qt #calculator
   waypipe #better ssh for DE
-    
+      
 # utils
   bitwarden-desktop #password manager
   nixd

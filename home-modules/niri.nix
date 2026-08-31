@@ -51,7 +51,6 @@ in {
       ] ++ (
         if hostname == "nixos-desktop" then [
           { command = [ "sh" "-c" "discord --start-minimized" ]; }
-          { command = [ "sh" "-c" "solaar --start-minimized"]; }
           { command = [ "element-desktop" "--hidden" ]; }
           { command = [ "sh" "-c" "steam -silent" ]; }
         ] else []

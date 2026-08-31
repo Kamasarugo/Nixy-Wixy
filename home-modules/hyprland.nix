@@ -29,6 +29,7 @@ in {
 ];
   
   wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland.configType = "lua";
   wayland.windowManager.hyprland.settings = {
 
 
