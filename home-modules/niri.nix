@@ -26,14 +26,14 @@ in {
     libnotify # some things rely on libnotify to function
   ];
   
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-gnome
-    ];
-    config.common.default = "gnome";
-  };
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = [
+  #     pkgs.xdg-desktop-portal-gtk
+  #     pkgs.xdg-desktop-portal-gnome
+  #   ];
+  #   config.common.default = "gnome";
+  # };
 
   services.hyprpaper.enable = true;
 
@@ -48,6 +48,9 @@ in {
         { command = [ "xwayland-satellite" ]; }
         { command = [ "noctalia" ]; }
         { command = [ "${pkgs.networkmanagerapplet}/bin/nm-applet" "--indicator" ]; }
+        { command = ["systemctl --user restart xdg-desktop-portal-gnome"]; }
+        { command = ["systemctl --user restart xdg-desktop-portal"]; }
+        
       ] ++ (
         if hostname == "nixos-desktop" then [
           { command = [ "sh" "-c" "discord --start-minimized" ]; }
