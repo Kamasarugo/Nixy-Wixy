@@ -73,7 +73,6 @@ programs = {
   bluetui #bluetooth
   upower #power management
   jellyfin-media-player #what it says
-  obs-studio
   libqalculate #calculator library
   qalculate-qt #calculator
   waypipe #better ssh for DE
@@ -96,7 +95,6 @@ programs = {
   protonplus #game compat.
   wine #game compat.
   r2modman #mod Client
-  xivlauncher #ffxiv
 #    (
 #    vintagestory.overrideAttrs (old: rec {
 #    postInstall = ''
@@ -110,6 +108,9 @@ programs = {
   element-desktop #matrix thingy
   spotify #music
   # nheko #matrix thingy
+  #
+  # UNI
+  logisim-evolution
 
 ];
   home.file = {
