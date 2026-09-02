@@ -43,6 +43,7 @@ programs = {
     enable = true;
     shellWrapperName = "y";
   };
+  waybar.enable = true;
 
   git = {
     enable = true;
@@ -60,7 +61,7 @@ programs = {
 
 # productivity
   obsidian #note taking app
-  libreoffice-fresh #office replacement
+  libreoffice-stable #office replacement
   floorp-bin #firefox wrapper
   vivaldi #chromium
   nemo #file editor
