@@ -1,12 +1,12 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
 imports = [
-  ./hyprland.nix
   ../theme/stylix.nix
   ./niri.nix
   ./fish.nix
-  
+
+  inputs.catppuccin.homeModules.catppuccin
   inputs.stylix.homeModules.stylix
 ];
 
@@ -23,6 +23,12 @@ nixpkgs.config = {
     "electron-40.10.5"
     ];
   };
+
+  # catppuccin = {
+  #   enable = true;
+  #   flavor = "mocha"; # latte, frappe, macchiato, mocha
+  #   accent = "mauve";
+  # };
 
 programs = {
   wofi.enable = true;
@@ -77,6 +83,7 @@ programs = {
   libqalculate #calculator library
   qalculate-qt #calculator
   waypipe #better ssh for DE
+  spotiflac #spotify downloader
       
 # utils
   bitwarden-desktop #password manager

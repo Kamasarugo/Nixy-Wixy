@@ -69,6 +69,9 @@
     description = "kamasarugo";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOsAzvtGSiY2MQJQO5q8jV5IGRncpbHrtdwR0f23l+mL kamasarugo@nixos"
+    ];
   };
 
     environment.sessionVariables = {
@@ -170,7 +173,14 @@ nixpkgs.config = {
     thermald.enable = true;
 
     flatpak.enable = true;
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false; # Disables keyboard-interactive/pam password prompts
+      PermitRootLogin = "prohibit-password"; # Recommended instead of "yes"
+      };
+    };
     upower.enable = true;
   };
 

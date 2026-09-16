@@ -22,7 +22,9 @@
     };
   };
 
-  stylix.targets.qt.enable = true;
+  stylix.targets = {
+    qt.enable = true;
+  };
   
   stylix.cursor = {
     package = pkgs.capitaine-cursors-themed;

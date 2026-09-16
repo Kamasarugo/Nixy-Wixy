@@ -1,4 +1,4 @@
-{ config , pkgs , osConfig, ... }:
+{ config , pkgs , osConfig, lib, ... }:
 let
   mod = "Super";
   menu = "fuzzel";
@@ -15,6 +15,7 @@ in {
   ];
 
   services.swaync.enable = true;
+  services.swaync.style = lib.mkForce null;
 
   home.packages = with pkgs; [
     ksnip
