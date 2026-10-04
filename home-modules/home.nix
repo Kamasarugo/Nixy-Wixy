@@ -6,7 +6,6 @@ imports = [
   ./niri.nix
   ./fish.nix
 
-  inputs.catppuccin.homeModules.catppuccin
   inputs.stylix.homeModules.stylix
 ];
 
@@ -103,6 +102,7 @@ programs = {
   protonplus #game compat.
   wine #game compat.
   r2modman #mod Client
+  lumafly #hollowknight client
 #    (
 #    vintagestory.overrideAttrs (old: rec {
 #    postInstall = ''

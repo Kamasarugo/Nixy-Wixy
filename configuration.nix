@@ -40,7 +40,7 @@
   
   networking.networkmanager.enable = true;
   networking.networkmanager.plugins = with pkgs; [
-    networkmanager-vpnc
+    # networkmanager-vpnc
   ];
   networking.firewall.checkReversePath = false;
   networking.firewall.allowedUDPPorts = [ 51820 ];
