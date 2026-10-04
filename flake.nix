@@ -38,15 +38,9 @@
       url = "github:AprilNEA/OpenLogi";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
  
   };
- outputs = { nixpkgs, niri, openlogi, catppuccin, ... }@inputs:
+ outputs = { nixpkgs, niri, openlogi, ... }@inputs:
   let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
@@ -61,7 +55,6 @@
           ./devices/laptop/hardware-configuration.nix
           ./configuration.nix
           ./home-modules/noctalia.nix
-          catppuccin.nixosModules.catppuccin
            ];
       };
 
@@ -73,7 +66,6 @@
           ./devices/pc/hardware-configuration.nix
           ./configuration.nix
           ./home-modules/noctalia.nix
-          catppuccin.nixosModules.catppucci
           openlogi.nixosModules.default
             {
               environment.systemPackages = [
