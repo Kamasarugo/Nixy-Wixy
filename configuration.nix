@@ -67,12 +67,19 @@
   users.users.kamasarugo = {
     isNormalUser = true;
     description = "kamasarugo";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "uucp" "libvirtd" "kvm"];
     packages = with pkgs; [];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOsAzvtGSiY2MQJQO5q8jV5IGRncpbHrtdwR0f23l+mL kamasarugo@nixos"
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPnGnBgccjncw0VMcpn/qjauAugKrTSzkIjLKssgVG9z" # zie laptop
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHmkNa62z50TJuvG8ny+pRGACrAi2pyiTJggJPTKYzAJ" # zie desktop
+
     ];
   };
+
+  users.groups.libvirtd.members = [ "kamasarugo" ];
+  users.groups.kvm.members = [ "kamasarugo" ];
+
 
     environment.sessionVariables = {
       # LD_LIBRARY_PATH = [ "${pkgs.libXcursor}/lib" "${pkgs.libXi}/lib"];
@@ -112,6 +119,9 @@ nixpkgs.config = {
   libXcursor
   libXi
   inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+  gnome-boxes
+  dnsmasq
+  phodav
 ];
  programs = {
 
@@ -183,6 +193,19 @@ nixpkgs.config = {
     };
     upower.enable = true;
   };
+
+  virtualisation.libvirtd = {
+    enable = true;
+
+    # Enable TPM emulation (for Windows 11)
+    qemu = {
+      swtpm.enable = true;
+    };
+  };
+
+  # Enable USB redirection
+  virtualisation.spiceUSBRedirection.enable = true;
+
 
   security.rtkit.enable = true;
 

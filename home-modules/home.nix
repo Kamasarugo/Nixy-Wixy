@@ -83,6 +83,7 @@ programs = {
   qalculate-qt #calculator
   waypipe #better ssh for DE
   spotiflac #spotify downloader
+  vscode
       
 # utils
   bitwarden-desktop #password manager
