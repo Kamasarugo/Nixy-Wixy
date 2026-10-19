@@ -1,0 +1,36 @@
+Port A
+  0:
+  1:
+  2:
+  3:
+  4:
+  5:
+  6:
+  7:
+Port B
+  0: IO Button B0
+  1: IO Button B1
+  2: IO Button B2
+  3: IO Button B3
+  4: LED Matrix SS
+  5: LED Matrix MOSI
+  6: LED Matrix MISO
+  7: LED Matrix SCK
+Port C
+  0:
+  1:
+  2:
+  3:
+  4:
+  5:
+  6:
+  7:
+Port D
+  0: IO Serial TX
+  1: IO Serial RX
+  2:
+  3:
+  4:
+  5:
+  6:
+  7:
